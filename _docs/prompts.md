@@ -110,3 +110,18 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
   - Tripo3D orienta la malla con la cara hacia el eje local `+X`. Al aplicar una rotación genérica de 180°, el rostro quedaba apuntando hacia el costado izquierdo.
   - Se desacopló la orientación estática del modelo (`-Math.PI / 2`) introduciendo un contenedor `headPivot` en Three.js.
   - Esto resolvió el bloqueo de ejes (*gimbal lock*), restaurando el control intuitivo del ratón: movimiento horizontal gira el rostro hacia los lados (yaw), vertical hacia arriba/abajo (pitch), y arrastrar con clic añade rotación táctil con retorno elástico suave como en Super Mario 64.
+
+---
+
+## 📌 Prompt 10: Humanización y Corrección del "Uncanny Valley" (Luz Cálida de Estudio vs. Sombras Tétricas)
+
+### Texto del Prompt enviado a la IA:
+> *"En el original de Tripo la apariencia era más agradable, en la nuestra se ve un poco tétrica, ¿hay algo que se pueda hacer? [adjuntando captura comparativa de Tripo vs. Three.js]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Ajustar la iluminación, sombreado y tratamiento de materiales para eliminar el efecto de "valle inquietante" (*uncanny valley*) o apariencia cadavérica.
+* **Diagnóstico y Solución Técnica**:
+  1. **Eliminación de Luz Fría de Relleno**: La escena tenía una luz puntual cian/azul (`0x93c5fd`) a alta potencia que proyectaba tintes azulados sobre la piel, haciéndola lucir enferma. Se reemplazó por un relleno melocotón cálido (`0xffeedb`).
+  2. **Luz Ambiental de Estudio Fotográfico**: Se añadió `THREE.AmbientLight(0xfff5ea, 1.7)` para rellenar las sombras oscuras del interior de la boca, cuencas oculares y cuello.
+  3. **Destello Vital en los Ojos (*Catchlight*)**: Luz puntual frontal blanca que refleja un brillo en ambas pupilas, otorgando una mirada despierta y amigable.
+  4. **Suavizado de Normales y Mateado de Piel**: Se eliminaron las facetas poligonales de la frente aplicando `shade_smooth` a 65,000 polígonos y ajustando la rugosidad PBR a 0.58 con mapeo tonal `ACESFilmicToneMapping` a 1.18.

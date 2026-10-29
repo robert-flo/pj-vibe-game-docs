@@ -115,3 +115,26 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
     - **Nivel padre (`headPivot`)**: Recibe limpiamente las coordenadas normalizadas del cursor `(mouseNormalizedX, mouseNormalizedY)` multiplicadas por sus factores angulares y aplica suavizado `lerp` a 10 unidades/delta.
   - Se implementó interacción de arrastre (*drag*) con resorte elástico: al mantener pulsado el botón izquierdo y arrastrar, la cabeza sigue el tirón del ratón, y al soltarlo regresa elásticamente a la posición de la mirada.
 * **Resultado**: La cabeza de Bukele arranca mirando fijamente al jugador en el centro y se mueve con total naturalidad en todas las direcciones siguiendo el puntero.
+
+
+---
+
+### 9. Iluminación Cálida de Estudio y Eliminación del Efecto Tétrico
+* **Problema visual**: Aunque el modelo 3D era exacto, en el render de Three.js lucía tétrico: frente facetada con sombras duras triangulares, ojos opacos sin vida, sonrisa con fondo negro inquietante y tinte verdoso/azulado sobre la piel.
+* **Causa técnica**:
+  1. Uso de luz puntual fría azul (`0x93c5fd`) que destrozaba el color cálido de la piel salvadoreña.
+  2. Falta de luz ambiental difusa que permitía que las cavidades faciales cayeran en sombra absoluta (0 lúmenes).
+  3. Facetas poligonales visibles en la frente debido a normales duras tras la decimación.
+  4. Piel con exceso de brillo especular tipo plástico mojado.
+* **Solución de ingeniería**:
+  1. **Esquema de Iluminación de Retrato Profesional**:
+     - `AmbientLight(0xfff5ea, 1.7)` cálida envolvente.
+     - `DirectionalLight(0xfffaee, 1.8)` frontal principal.
+     - `PointLight(0xffeedb, 1.3)` lateral de relleno melocotón.
+     - `PointLight(0xffffff, 1.1)` a nivel de cámara para destello de vida (*eye catchlight*).
+  2. **Pipeline de Suavizado Geométrico**:
+     - Se aumentó el presupuesto a 65,000 polígonos con `shade_smooth` completo en Blender y cálculo automático de normales de vértices en Three.js.
+  3. **Calibración Cinematográfica PBR**:
+     - Activación de `ACESFilmicToneMapping` con exposición calibrada a 1.18.
+     - Rugosidad PBR establecida en 0.58 (acabado de piel mate natural).
+* **Resultado**: El rostro recuperó su calidez, amabilidad y viveza, viéndose tan acogedor y fotogénico como en el visor original de Tripo, pero completamente interactivo a 60 FPS.

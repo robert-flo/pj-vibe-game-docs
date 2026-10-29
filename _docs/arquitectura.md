@@ -46,7 +46,12 @@ El juego se organiza en torno a módulos desacoplados para garantizar que el có
 ```
 
 ### Componentes Principales:
-1. **Bucle Principal (`animate`)**: Utiliza `requestAnimationFrame` y calcula un `delta` temporal para asegurar que la velocidad del salto y carrera sea idéntica sin importar los Hz del monitor.
-2. **Controlador del Personaje**: Sistema con aceleración, desaceleración (fricción con el suelo), rotación suave hacia la dirección de movimiento y salto parabólico con gravedad constante.
-3. **Cámara en Tercera Persona (Orbital)**: Sigue al personaje manteniendo una distancia y altura fijas con interpolación lineal (`lerp`), evitando movimientos bruscos.
-4. **Sintetizador Web Audio API**: No requiere descargar archivos `.mp3` o `.wav` de servidores externos; sintetiza ondas cuadradas y senoidales en tiempo real para simular el sonido de salto, recolección de moneda y fanfarria.
+1. **Máquina de Estados de Escenas**:
+   * **Escena 1 (Title Screen)**: Logotipo 3D biselado con textura de madera y licencia `©2026 Kodigo Academy`.
+   * **Escena 2 (3D Bukele Head Screen)**: Pantalla icónica con la cabeza 3D de Nayib Bukele (modelada en Blender), fondo en mosaico azul "SUPER BUKELE 64", seguimiento de cursor de ratón en tiempo real y tipografía arcoíris "PRESS START".
+   * **Escena 3 (Gameplay 3D)**: Nivel en tercera persona con físicas, colisiones de plataformas, recolección de Bitcoins y la Estrella.
+   * **Escena de Victoria**: Cinemática con fanfarria y saludo presidencial.
+2. **Bucle Principal (`animate`)**: Utiliza `requestAnimationFrame` y calcula un `delta` temporal para asegurar que la velocidad del salto y carrera sea idéntica sin importar los Hz del monitor.
+3. **Controlador del Personaje**: Sistema con aceleración, desaceleración (fricción con el suelo), rotación suave hacia la dirección de movimiento y salto parabólico con gravedad constante.
+4. **Cámara en Tercera Persona (Orbital)**: Sigue al personaje manteniendo una distancia y altura fijas con interpolación lineal (`lerp`), evitando movimientos bruscos.
+5. **Sintetizador Web Audio API**: No requiere descargar archivos `.mp3` o `.wav` de servidores externos; sintetiza ondas cuadradas y senoidales en tiempo real para simular el sonido de salto, recolección de moneda y fanfarria.

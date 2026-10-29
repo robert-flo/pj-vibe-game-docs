@@ -125,3 +125,23 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
   2. **Luz Ambiental de Estudio Fotográfico**: Se añadió `THREE.AmbientLight(0xfff5ea, 1.7)` para rellenar las sombras oscuras del interior de la boca, cuencas oculares y cuello.
   3. **Destello Vital en los Ojos (*Catchlight*)**: Luz puntual frontal blanca que refleja un brillo en ambas pupilas, otorgando una mirada despierta y amigable.
   4. **Suavizado de Normales y Mateado de Piel**: Se eliminaron las facetas poligonales de la frente aplicando `shade_smooth` a 65,000 polígonos y ajustando la rugosidad PBR a 0.58 con mapeo tonal `ACESFilmicToneMapping` a 1.18.
+
+---
+
+## 📌 Prompt 11: Rediseño Auténtico del Logo de Pantalla de Título (Bloques de Madera 3D N64)
+
+### Texto del Prompt enviado a la IA:
+> *"Estas son las dos pantallas de bienvenida, la de nuestro juego y la original, tomando en cuenta que este juego no será compartido ni monetizado y que su existencia es efímera, ¿no es posible usar un diseño más parecido al original? [adjuntando capturas comparativas de la pantalla actual vs. el título original de Super Mario 64 en Nintendo 64]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Abandonar la aproximación tipográfica plana de CSS y crear un logotipo idéntico al original de 1996: bloques tridimensionales de madera de pino con caras frontales de colores primarios vivos (Rojo, Azul, Amarillo, Verde), disposición curvada, el bloque "64" rojo con bisel dorado inclinado en perspectiva isométrica y el clásico aviso de copyright retro azul neón.
+* **Diagnóstico y Solución Técnica**:
+  - **Fallo de renderizado web en CSS**: La combinación de degradados `linear-gradient` con `-webkit-background-clip: text` y `text-shadow` pesada en navegadores modernos provoca que la sombra opaque el relleno o se renderice marrón oscuro a través de la transparencia del texto.
+  - **Pipeline Automatizado en Blender 5.2 LTS (`render_super_bukele_logo.py`)**:
+    1. Se modeló por script cada letra de "SUPER" y "BUKELE" en geometría 3D biselada utilizando la tipografía pesada Noto Sans Black.
+    2. Se programó un shader de madera de pino procedural con coordenadas de textura estiradas y distorsión de vetas de aserrío para los laterales y bloques inferiores.
+    3. Se separaron las normales de las caras frontales para asignar colores primarios con acabado de juguete plástico brillante:
+       - **SUPER**: S (Rojo), U (Azul), P (Amarillo), E (Azul), R (Verde).
+       - **BUKELE**: B (Azul), U (Verde), K (Amarillo), E (Rojo), L (Verde), E (Azul).
+       - **64**: Extrusión profunda en rojo con laterales y biseles dorados, rotado -15° en la esquina superior derecha.
+    4. Se renderizó en canal alfa transparente RGBA (1600x750) con iluminación solar cenital y luz de relleno cálida, integrándolo en la interfaz con animación sutil de flotación (`logoFloat`).

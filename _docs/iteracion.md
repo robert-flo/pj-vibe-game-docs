@@ -138,3 +138,25 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
      - Activación de `ACESFilmicToneMapping` con exposición calibrada a 1.18.
      - Rugosidad PBR establecida en 0.58 (acabado de piel mate natural).
 * **Resultado**: El rostro recuperó su calidez, amabilidad y viveza, viéndose tan acogedor y fotogénico como en el visor original de Tripo, pero completamente interactivo a 60 FPS.
+
+
+---
+
+### 10. Recreación del Logo 3D en Bloques de Madera Auténticos de Nintendo 64
+* **Problema visual detectado**: La pantalla de título original de Super Mario 64 destaca por sus letras de juguete de madera con caras de colores saturados y su característico bloque "64" dorado. En contraste, la versión inicial en el juego utilizaba spans HTML con sombras CSS que se veían planas, apagadas y con artefactos de color marrón oscuro debido al solapamiento de `-webkit-text-fill-color: transparent` con `text-shadow`.
+* **Causa técnica**:
+  - Los motores de renderizado de los navegadores (Blink / Gecko) no pueden calcular oclusión ambiental real, biseles tridimensionales ni texturas de madera de ángulo oblicuo mediante CSS puro sin glitches de transparencia y rendimiento.
+* **Solución de ingeniería con Blender headless (`render_super_bukele_logo.py`)**:
+  1. **Generación Geométrica 3D**:
+     - Se crearon las mallas de texto en Blender con biselado paramétrico (`bevel_depth = 0.045`, `extrude = 0.72`) y se convirtieron a mallas poligonales con rotación en el espacio de mundo.
+     - Se clasificaron los polígonos por vector normal: normales frontales (`normal.y < -0.32`) reciben el material del color primario correspondiente, mientras que las caras laterales e inferiores reciben el material de madera de pino.
+  2. **Shader de Madera Pino N64**:
+     - Implementación de un nodo `ShaderNodeTexWave` con distorsión sobre coordenadas de objeto y rampa de color dual (`#c77a38` veta ámbar / `#f5c280` pino claro) para simular el grano de los bloques de madera tallada.
+  3. **Disposición y Arqueo Clásico**:
+     - Fila superior curvada con "SUPER" (Rojo, Azul, Amarillo, Azul, Verde) y el bloque "64" inclinado a -15° con bordes dorados y el "TM" superior.
+     - Fila inferior imponente con "BUKELE" (Azul, Verde, Amarillo, Rojo, Verde, Azul) con extrusión profunda que revela los bloques inferiores.
+  4. **Encuadre Óptico y Render RGBA**:
+     - Cámara a 52mm focal alineada en perspectiva isométrica, iluminación de sol cenital con luces de relleno cálidas e inferiores, exportando a 1600x750 en canal alfa transparente.
+  5. **Integración Web**:
+     - Sustitución de las 50 líneas de CSS obsoleto por la imagen de alta fidelidad `.n64-3d-logo`, combinada con animación suave de respiración `logoFloat`, el rótulo brillante `©2026 Kodigo Academy` y el botón pulsante `PRESS START`.
+* **Resultado**: La pantalla de inicio alcanza una estética 100% fidedigna y nostálgica de Nintendo 64, idéntica en espíritu y paleta al juego original.

@@ -39,8 +39,11 @@ Aunque la guía inicial de la asignatura sugería Python (como Pygame), el cated
 2. **Capacidades 3D reales**: Permite una cámara en tercera persona dinámica, iluminación direccional y sombras, y renderizado espacial fiel al homenaje de Mario 64.
 3. **Audio sin dependencias externas pesadas**: Empleo de la **Web Audio API** para sintetizar efectos retro en tiempo real directamente desde el navegador.
 
-### 2. Exploración de herramientas avanzadas (Skills)
-Durante la fase previa de preparación, se investigaron e instalaron en el entorno de desarrollo dos skills especializadas:
-* `game-builder`: Metodología para guiar la paridad visual entre referencias de juegos comerciales y prototipos generados por IA.
-* `game-builder-blender-assets` y suite completa de **Blender 5.2 LTS**: Para evaluar el modelado de assets 3D en formato GLB.
-* **Conclusión de diseño**: Para mantener el código comprensible, auditable por el estudiante y de carga ultrarrápida en GitHub Pages, se optó por construir la geometría de Nayib y los props de forma procedural estilizada directamente con primitivas agrupadas y materiales optimizados de Three.js.
+### 2. Implementación de las Skills Especializadas
+Para garantizar que el juego no fuese un simple conjunto de primitivas genéricas, se aplicó rigurosamente el protocolo de las dos skills de desarrollo:
+* **`game-builder`**:
+  * Definición formal del **Stage A**: `BRIEF.md` (bloqueado), matriz de referencias visuales bloqueadas en `refs-locked/` (`ref-01` a `ref-04`), registro de activos en `art/LEDGER.md` y la barra visual `art/BAR.md` (criterios universales C1–C5 + C6 tipografía N64 + C7 vestimenta ceremonial).
+* **`game-builder-blender-assets`**:
+  * En lugar de construir al personaje con cajas en el motor web, se ejecutó un pipeline en **Blender 5.2.2 LTS** (`build_bukele.py`).
+  * Se modeló a Nayib Bukele en Blender con su chaquetón ceremonial negro, cuello mandarín con bordados dorados, la banda presidencial azul y blanco con el escudo nacional, peinado y barba característica.
+  * Superó la compuerta de validación (*turnaround gate*) con renders frontal, lateral y posterior (`artifacts/stills/`), exportándose como asset oficial **`assets/models/bukele.glb`** que se carga en Three.js con `GLTFLoader`.

@@ -167,3 +167,21 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
   3. **Integración Web y Tipografía Rainbow**:
      - Se configuró `.head-bg-mosaic` con repetición perfecta a 190x190px.
      - Se asignó la fuente Mario 64 al botón rainbow `PRESS START` de la esquina inferior izquierda.
+
+
+---
+
+## 📌 Prompt 13: Unificación Estética Total entre Escena 1 y Escena 2 (Fuente Mario 64 en Logo 3D y Fondo N64)
+
+### Texto del Prompt enviado a la IA:
+> *"La primer pantalla no tiene el diseño que sí tiene la segunda [adjuntando capturas comparativas de la pantalla de bienvenida con el logo anterior vs. la pantalla del rostro 3D con la tipografía y el fondo de mosaico N64]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Resolver la discrepancia de diseño entre ambas pantallas iniciales para que la Escena 1 comparta el mismo ADN visual que la Escena 2:
+  1. Que el logotipo 3D en bloques de madera utilice la geometría facetada oficial de `Typeface Mario 64` en lugar de una fuente genérica sans-serif.
+  2. Que el fondo de la pantalla de título adopte la misma cuadrícula de mosaico acolchado azul N64 con viñeta cinematográfica.
+  3. Que los textos de interfaz (`©2026 KODIGO ACADEMY` y `PRESS START`) adopten la tipografía auténtica del juego.
+* **Diagnóstico y Solución Técnica**:
+  - **Re-renderizado 3D en Blender (`render_super_bukele_logo.py`)**: Se sustituyó `NotoSans-Black` por `TypefaceMario64.otf`, recalculando las mallas poligonales biseladas para reproducir las aristas angulares características de las letras clásicas de Mario 64 (la B con muescas, la U con base pentagonal, el 64 emblemático).
+  - **Composición del Fondo en Escena 1**: Se actualizó `.title-scene` con la textura de mosaico `n64_bg_tile.png` suavizada con un degradado radial oscuro que hace destacar el logo tridimensional flotante.
+  - **Cohesión Tipográfica**: Se asignó `TypefaceMario64` al botón pulsante `PRESS START` y al copyright de Kodigo Academy.

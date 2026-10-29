@@ -180,3 +180,20 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
      - Sustitución del texto CSS por `background-image: url('../assets/img/n64_bg_tile.png')` con tamaño de celda a 190px.
      - Aplicación de la fuente oficial a los caracteres multicolor de `PRESS START`.
 * **Resultado**: El busto 3D de Bukele ahora reposa sobre la misma e inconfundible cuadrícula azul acolchada de Super Mario 64, logrando cohesión estilística absoluta entre el modelo 3D y su entorno.
+
+
+---
+
+### 12. Unificación Integral del Arte: Logotipo 3D Poligonal y Mosaico en Pantalla de Inicio
+* **Problema visual detectado**: Aunque la Escena 2 (rostro interactivo) ya contaba con la cuadrícula de mosaico acolchado y la tipografía oficial `Typeface Mario 64`, la Escena 1 (pantalla de bienvenida) se sentía desconectada estilísticamente: el logo 3D utilizaba letras redondeadas de Noto Sans y el fondo permanecía en un negro plano.
+* **Causa técnica**:
+  - El render inicial de `super_bukele_64_logo.png` fue generado previo a la instalación de la tipografía retro, resultando en caracteres curvos no canónicos que contrastaban con las facetas poligonales de 64 bits de la segunda escena.
+* **Solución de ingeniería**:
+  1. **Re-modelado Tridimensional con `TypefaceMario64.otf`**:
+     - Se adaptó el pipeline de Blender para cargar la tipografía facetada en cada letra de "SUPER" y "BUKELE", así como en el bloque "64" inclinado y "TM".
+     - Cada bloque de madera extruido adoptó la silueta geométrica exacta de la fuente original de Nintendo 64.
+  2. **Continuidad de Fondo con Doble Capa**:
+     - Se integró el mosaico acolchado `n64_bg_tile.png` en `.title-scene` mediante `background-image` con un viñeteado radial oscuro (`rgba(10, 25, 80, 0.72)` al centro y `rgba(2, 5, 20, 0.95)` a los bordes) para mantener legibilidad y protagonismo del logo.
+  3. **Tipografía Unificada en Interfaz**:
+     - La licencia `©2026 KODIGO ACADEMY` y el botón `PRESS START` se actualizaron a `TypefaceMario64`.
+* **Resultado**: La experiencia visual desde que el usuario entra al juego es 100% homogénea, nostálgica y profesional, transmitiendo una estética de cartucho original de Nintendo 64 de principio a fin.

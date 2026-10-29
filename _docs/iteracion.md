@@ -197,3 +197,18 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
   3. **Tipografía Unificada en Interfaz**:
      - La licencia `©2026 KODIGO ACADEMY` y el botón `PRESS START` se actualizaron a `TypefaceMario64`.
 * **Resultado**: La experiencia visual desde que el usuario entra al juego es 100% homogénea, nostálgica y profesional, transmitiendo una estética de cartucho original de Nintendo 64 de principio a fin.
+
+
+---
+
+### 13. Calibración Espacial del Logotipo: Desacoplamiento y Despeje del Bloque "64"
+* **Problema visual detectado**: Al adoptar las métricas anchas de la fuente oficial `Typeface Mario 64`, el bloque rojo "64" colisionaba con la cara frontal y la madera de la letra `R` de "SUPER", además de quedar encimado sobre la `E` de "BUKELE".
+* **Causa técnica**:
+  - Las proporciones de caja tipográfica de la fuente Mario 64 son considerablemente más anchas y anguladas que las de fuentes convencionales, requiriendo un espaciado horizontal ampliado para los elementos asimétricos flotantes.
+* **Solución de ingeniería**:
+  1. **Reajuste de Coordenadas 3D en Blender**:
+     - Traslación del objeto `Logo_64` de `x = 3.95` a `x = 4.45` y elevación a `z = 1.25`, otorgando un espacio negativo nítido entre la `R` y el número.
+     - Traslación coordinada del objeto `Logo_TM` a `x = 5.65`, `z = 2.15`.
+  2. **Reencuadre de Cámara Focal**:
+     - Se ajustó el centro de la cámara en el eje horizontal a `x = 0.55` para garantizar que ambos extremos del logotipo (desde la `B` hasta el `TM`) cuenten con márgenes simétricos idénticos en la pantalla 16:9.
+* **Resultado**: El logotipo "SUPER BUKELE 64" alcanza su máxima claridad tipográfica, con cada letra y bloque tridimensional respirando de forma independiente sin oclusiones indeseadas.

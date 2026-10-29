@@ -185,3 +185,20 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
   - **Re-renderizado 3D en Blender (`render_super_bukele_logo.py`)**: Se sustituyó `NotoSans-Black` por `TypefaceMario64.otf`, recalculando las mallas poligonales biseladas para reproducir las aristas angulares características de las letras clásicas de Mario 64 (la B con muescas, la U con base pentagonal, el 64 emblemático).
   - **Composición del Fondo en Escena 1**: Se actualizó `.title-scene` con la textura de mosaico `n64_bg_tile.png` suavizada con un degradado radial oscuro que hace destacar el logo tridimensional flotante.
   - **Cohesión Tipográfica**: Se asignó `TypefaceMario64` al botón pulsante `PRESS START` y al copyright de Kodigo Academy.
+
+
+---
+
+## 📌 Prompt 14: Ajuste Espacial del Bloque "64" (Eliminación de Solapamiento con la R y Texto Inferior)
+
+### Texto del Prompt enviado a la IA:
+> *"Mucho mejor, vas muy bien, pero el 64 está sobre el demás texto, sepáralo por favor, ahora ya tenemos un punto de inicio bueno [adjuntando captura donde el número 64 cubría parcialmente la letra R y la E de Bukele]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Reubicar el bloque tridimensional "64" en el render de Blender para garantizar legibilidad completa, evitando colisiones con la letra `R` de "SUPER" y la fila inferior de "BUKELE".
+* **Diagnóstico y Solución Técnica**:
+  - En la versión inicial con la tipografía oficial, el bloque "64" (de 1.85 unidades de ancho con alineación central en `x = 3.95`) extendía su caja delimitadora hacia `x = 2.75`, invadiendo el espacio de la `R` (`x = 2.4` a `3.1`).
+  - Se recalculó la posición tridimensional en Blender (`render_super_bukele_logo.py`):
+    - Se desplazó el "64" hacia la derecha a `x = 4.45` y se elevó a `z = 1.25`, logrando una separación limpia de más de 1.3 unidades respecto a la `R`.
+    - Se reubicó el bloque "TM" a `(5.65, -0.25, 2.15)`.
+    - Se reencuadró la cámara ortográfica en `x = 0.55` para centrar perfectamente la silueta extendida del logotipo.

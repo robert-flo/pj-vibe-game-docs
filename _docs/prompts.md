@@ -74,3 +74,14 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
 ### Explicación y Justificación:
 * **Qué se pidió**: Solucionar el problema de salto abrupto de escenas y re-esculpir en Blender la cabeza con proporciones anatómicas reales (nariz 3D proyectada, mandíbula, orejas, cabello peinado hacia atrás y cuello ceremonial bordado).
 * **Demostración de criterio técnico**: Demuestra que el estudiante no aceptó un resultado defectuoso o superficial, sino que evaluó el comportamiento interactivo, diagnosticó la falla y exigió máxima calidad estética.
+
+---
+
+## 📌 Prompt 7: Aplicación Rigurosa de la Skill de Blender (Cero Fotos en Huevos, Escultura N64 Pura)
+
+### Texto del Prompt enviado a la IA:
+> *"La mecánica de que sigue al mouse y gira está bien, pero el diseño en sí del rostro es fatal (parece un huevo deformado con una foto estirada). Dime cómo utilizando las skills que hablamos podemos mejorar esto, porque lo que me has entregado está muy lejos de ser un buen inicio. Procede y hazlo bien, sigue al pie de la letra la skill de Blender (`game-builder-blender-assets`) para lograr un busto 3D estilizado creíble."*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Abandonar totalmente el atajo erróneo de "pegar fotos en esferas" y construir el busto de Bukele mediante escultura poligonal estilizada (*stylized 3D low-poly caricature*) respetando la estética genuina de Super Mario 64.
+* **Por qué se ajustó o refinó**: La skill de Blender prohíbe el uso de cajas o esferas deformadas en activos de cámara principal. Este prompt redirigió el desarrollo hacia una topología de 6.6k polígonos con materiales PBR vectoriales limpios (ojos con esclera, iris y destello, barba y cabello con volumen 3D real y ornamentación ceremonial en oro).

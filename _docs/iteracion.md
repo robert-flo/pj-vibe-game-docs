@@ -66,3 +66,20 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
      - **Cuello mandarín ceremonial con anillo de oro metálico y banda presidencial**.
   3. Mapeo UV cilíndrico/esférico frontal calibrado y exportación en formato GLB optimizado (453 KB).
 * **Resultado**: Un busto tridimensional creíble, fidedigno a la fotografía de referencia y con la iluminación especular y estética característica de la era de Nintendo 64.
+
+
+---
+
+### 6. Transición de "Foto en Esfera" a Modelo Poligonal Estilizado N64
+* **Comportamiento defectuoso**: Al intentar mapear una fotografía 2D sobre una esfera UV deformada, se produjo el "síndrome de la cabeza de huevo": ojos estirados lateralmente hacia las orejas, nariz en forma de pico afilado y parte superior con aspecto de gorro de baño.
+* **Criterio aplicado según la skill `game-builder-blender-assets`**:
+  - En *Super Mario 64*, la pantalla de título original de 1996 nunca usó fotos; utilizó **geometría poligonal estilizada** con volúmenes claros y materiales limpios.
+  - La skill clasifica cualquier activo de cámara principal con forma de esfera deformada como **FAIL automático en el Turnaround Gate**.
+* **Nueva Implementación Técnica**:
+  1. **Cabeza y Mandíbula**: Cráneo anatómico con mandíbula angulada y mentón cuadrado característico de Bukele.
+  2. **Nariz 3D Real**: Puente nasal recto con inclinación de 22°, punta redondeada y aletas nasales separadas.
+  3. **Ojos N64 Auténticos**: Conjunto de 4 elementos por ojo: esclera marfil, iris castaño, pupila negra y destello blanco (*eye glint*).
+  4. **Barba y Bigote Volumétricos**: Geometría en 3D que abraza la mandíbula y el labio superior, permitiendo que la iluminación y las sombras se proyecten de forma natural.
+  5. **Cabello Pompadour 3D**: Volumen superior elevado, copete frontal y ondas laterales que caen en las patillas.
+  6. **Indumentaria Presidencial**: Cuello mandarín alto con doble anillo de oro metálico y banda presidencial tricolor con escudo nacional.
+* **Resultado**: Un busto tridimensional limpio, carismático y técnicamente impecable, que rinde un tributo visual auténtico a Nintendo 64 sin artefactos ni deformaciones grotescas.

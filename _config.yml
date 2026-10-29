@@ -1,0 +1,27 @@
+title: "Super Bukele 64 - Vibecoding Docs"
+description: "Documentación y entrega académica de Vibecoding con IA para el mini-juego 3D"
+url: "https://robert-flo.github.io"
+baseurl: "/pj-vibe-game-docs"
+lang: es-SV
+
+theme: jekyll-vitepress-theme
+plugins:
+  - jekyll-vitepress-theme
+
+jekyll_vitepress:
+  branding:
+    site_title: "Super Bukele 64"
+  syntax:
+    light_theme: github
+    dark_theme: github.dark
+
+collections:
+  docs:
+    output: true
+    permalink: "/docs/:name/"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

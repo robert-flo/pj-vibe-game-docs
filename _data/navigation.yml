@@ -1,0 +1,8 @@
+- title: Inicio
+  url: /
+- title: Documentación
+  url: /docs/introduccion/
+  collections: [docs]
+- title: 🎮 Jugar
+  url: https://robert-flo.github.io/pj-vibe-game/
+  target: _blank

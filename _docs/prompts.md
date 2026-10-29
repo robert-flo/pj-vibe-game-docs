@@ -85,3 +85,14 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
 ### Explicación y Justificación:
 * **Qué se pidió**: Abandonar totalmente el atajo erróneo de "pegar fotos en esferas" y construir el busto de Bukele mediante escultura poligonal estilizada (*stylized 3D low-poly caricature*) respetando la estética genuina de Super Mario 64.
 * **Por qué se ajustó o refinó**: La skill de Blender prohíbe el uso de cajas o esferas deformadas en activos de cámara principal. Este prompt redirigió el desarrollo hacia una topología de 6.6k polígonos con materiales PBR vectoriales limpios (ojos con esclera, iris y destello, barba y cabello con volumen 3D real y ornamentación ceremonial en oro).
+
+---
+
+## 📌 Prompt 8: Integración de IA Generativa Multimodal 3D (Tripo3D) y Pipeline de Optimización en Blender
+
+### Texto del Prompt enviado a la IA:
+> *"No me deja exportarlo sin suscripción, pero te dejo 15 imágenes de la rotación 360 del visor de Tripo. [Tras descubrir el método de extracción de red en WebGL]: Ya descargué el archivo `.glb` original en mi carpeta Downloads (`tripo_pbr_model_90b7e5bb-e652-4561-a9ed-d309aab99399_meshopt.glb`). Por favor procésalo en local, optimízalo e intégralo al juego."*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Adoptar un enfoque híbrido de vanguardia: generación de la escultura 3D de alta resolución mediante IA generativa visual (Tripo3D), extracción del activo nativo WebGL y posprocesamiento con herramientas de ingeniería local (descompresión `gltf-transform`, decimado geométrico de 1.95 millones a 35k polígonos en Blender 5.2 LTS, centrado de pivote y normalización de escala para Three.js).
+* **Demostración de criterio técnico**: Evidencia la capacidad de combinar herramientas de IA de frontera con pipelines profesionales de optimización de activos 3D para web.

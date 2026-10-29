@@ -228,3 +228,28 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - Se implementó el cursor seguidor con coordenadas de ratón en tiempo real y posicionamiento automático inicial sobre el slot A.
     - Se configuró el listener global de clic y teclas de acción para avanzar inmediatamente al nivel 3D.
 
+---
+
+## 📌 Prompt 16: Integración Cinemática (Carta Parodia de Gabriela + Vuelo de Lakitu al Castillo)
+
+### Texto del Prompt enviado a la IA:
+> *"A partir del segundo 6 al 46 hay un video que no es interactivo en el juego original? podrias incrustar ese video? dame tu opinion? https://youtu.be/CL8rDvttmjY?si=1Hs8D5QKc1FyYDTN ... 2 [Selección de Opción 2: Carta adaptada a Bukele + Video del castillo]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**: 
+  1. Analizar la secuencia cinemática no interactiva de *Super Mario 64* (segundos 6 al 46) que sigue a la selección de archivo.
+  2. Evaluar la viabilidad técnica y conveniencia de diseño de incrustar el video en el juego web.
+  3. Ejecutar la **Opción 2**: Adaptar la pantalla de la carta introductoria a la narrativa de "Super Bukele 64" (la Primera Dama Gabriela invitando a Nayib Bukele al castillo) con su tema musical retro, y enlazarla suavemente con el video original remasterizado del vuelo de Lakitu sobrevolando el castillo de Peach antes de comenzar el nivel jugable.
+* **Diagnóstico y Solución Técnica**:
+  - **Aclaración de Motor Retro**: Se explicó que en la consola N64 esta secuencia no era un video pre-grabado sino una cinemática generada en tiempo real por el chip de la consola, pero que para el navegador un reproductor HTML5 optimizado brinda una fluidez perfecta a 60 fps sin coste de cómputo WebGL.
+  - **Extracción y Optimización de Audio y Video**:
+    - Se extrajo el tema musical de la carta (`assets/audio/letter_bgm.mp3`).
+    - Se procesó el vuelo cinemático de Lakitu a 720p 60fps H.264 (`assets/video/lakitu_castle_flight.mp4`, 4.2 MB) para carga instantánea.
+  - **Diseño del Pergamino de Gabriela (`#scene-letter`)**:
+    - Estructura con textura de pergamino envejecido (`#fdfbf7` a `#eee1c4`), marco perimetral biselado dorado de 10px y sello real con corona.
+    - Tipografía serif elegante con el texto parodia: *"Querido Nayib: Por favor ven al castillo. Te he preparado una sorpresa... Con cariño-- Primera Dama Gabriela"*.
+  - **Transición y Flujo Cinematográfico (`js/game.js`)**:
+    - El flujo secuencial se amplió: `Título` ➔ `Cabeza 3D` ➔ `Select File` ➔ `Carta de Gabriela` ➔ `Vuelo de Lakitu` ➔ `Gameplay 3D`.
+    - Se incluyó la opción universal de saltar la cinemática en cualquier momento pulsando `[ESPACIO]` o haciendo clic.
+
+

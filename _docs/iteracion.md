@@ -234,3 +234,23 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
      - El usuario puede hacer clic en cualquier punto del tablero o presionar `Enter`/`Espacio` para avanzar inmediatamente a la Escena 4 (el gameplay 3D en la pradera con Bukele recolectando Bitcoins).
 * **Resultado**: La transición entre la interacción de la cabeza 3D y la partida jugable es idéntica en estética y ritmo a la obra maestra de Nintendo 64.
 
+---
+
+### 15. Secuencia Cinemática Adaptada: Carta de Gabriela y Vuelo de Lakitu
+* **Objetivo de diseño**: Resolver la incoherencia narrativa que supondría proyectar a Mario y a la Princesa Peach en la cinemática inicial del video original, creando una experiencia puente personalizada ("Opción 2") que une la nostalgia auténtica de N64 con los personajes de la parodia.
+* **Componentes implementados**:
+  1. **Pantalla del Pergamino de la Primera Dama (`#scene-letter`)**:
+     - Emulación de la carta original de Peach con una composición centrada flotante, marco biselado dorado de 10px y textura de pergamino cálido.
+     - Texto adaptado:
+       > *"Querido Nayib: Por favor ven al castillo. Te he preparado una sorpresa... Con cariño-- Primera Dama Gabriela"*.
+     - Sello real circular en oro y bronce con icono de corona.
+     - Reproducción síncrona del arpegio de piano original de la carta (`assets/audio/letter_bgm.mp3`).
+  2. **Cinemática de Vuelo de Lakitu (`#scene-cinematic`)**:
+     - Recorte y transcodificación optimizada a 720p 60fps (`assets/video/lakitu_castle_flight.mp4`, 4.2 MB) del vuelo sobre el foso y jardines del castillo.
+     - Reproducción a pantalla completa tras leer la carta.
+     - Indicador flotante estilizado `[Pulsa ESPACIO para saltar cinemática ⏩]`.
+  3. **Control y Salto Universal**:
+     - El jugador puede presionar `Espacio`, `Enter`, `Escape` o hacer clic en cualquier instante para omitir la cinemática y entrar inmediatamente a la Escena 6 (el nivel 3D en la pradera con Bukele).
+* **Resultado**: El arco narrativo introductorio queda completo: Título ➔ Rostro 3D ➔ Selección de Partida ➔ Carta de Gabriela ➔ Vuelo al Castillo ➔ Jugabilidad 3D.
+
+

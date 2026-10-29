@@ -202,3 +202,29 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - Se desplazó el "64" hacia la derecha a `x = 4.45` y se elevó a `z = 1.25`, logrando una separación limpia de más de 1.3 unidades respecto a la `R`.
     - Se reubicó el bloque "TM" a `(5.65, -0.25, 2.15)`.
     - Se reencuadró la cámara ortográfica en `x = 0.55` para centrar perfectamente la silueta extendida del logotipo.
+
+---
+
+## 📌 Prompt 15: Implementación de la Escena 3 ("SELECT FILE" Screen con Cursor de Mano 3D y Avance Global)
+
+### Texto del Prompt enviado a la IA:
+> *"Esta es la 3 pantalla del juego, básicamente permite seleccionar un perfil y el mouse tiene forma de una mano, pero para efectos de nuestro juego, en cualquier lugar de la pantalla que de clic pasará a la siguiente pantalla... Aprobado, puedes ver la secuencia en este video segundos 5 al 8 https://youtu.be/CL8rDvttmjY?si=ePAGF4OayX1eJiTF"*
+
+### Explicación y Justificación:
+* **Qué se pidió**: 
+  1. Recrear con máxima fidelidad retro la tercera pantalla de la secuencia introductoria de *Super Mario 64*: la pantalla dorada de selección de partida ("SELECT FILE").
+  2. Sustituir el cursor del sistema por la icónica mano enguantada blanca tridimensional de Mario 64, siguiendo el movimiento del ratón por toda la pantalla.
+  3. Comportamiento interactivo simplificado: hacer clic en cualquier lugar de la pantalla o presionar `Enter`/`Espacio` transiciona inmediatamente a la siguiente escena (el nivel 3D en la pradera).
+  4. Mantener la paleta cromática, los 4 slots de partida ("BUKELE A, B, C, D" con el rótulo multicolor "NEW"), los 4 bloques de comando biselados inferiores ("SCORE", "COPY", "ERASE", "STEREO") y el marco biselado dorado.
+* **Diagnóstico y Solución Técnica**:
+  - **Modelado y Renderizado del Cursor en Blender (`render_hand_cursor.py`)**: Se modeló proceduralmente en Blender la mano enguantada blanca de baja poligonalidad con material cel-shading retro, puño cilíndrico inclinado, dedo índice extendido hacia arriba a la izquierda y las costuras negras en el dorso, exportado a `assets/img/n64_hand_cursor.png` (256x256 RGBA).
+  - **Generación del Retrato de Partida (`bukele_file_icon.png`)**: Se procesó el perfil de Nayib Bukele en escala de grises con contraste calibrado para integrarse en las miniaturas metálicas de los slots A, B, C y D.
+  - **Composición de la Pantalla SELECT FILE (`index.html` + `css/style.css`)**:
+    - Marco biselado dorado de 24px (`#fde047`, `#a16207`, `#713f12`, `#eab308`) sobre fondo satinado ámbar cálido.
+    - Cabecera con tipografía `TypefaceMario64` en colores alternados verde, fucsia y amarillo con relieve sombreado.
+    - Cuadrícula 2x2 de tarjetas de partida y botones inferiores cúbicos con biseles prismáticos.
+  - **Integración en la Máquina de Estados (`js/game.js`)**:
+    - Se incorporó `SCENE_3_FILESELECT` entre la interacción de la cabeza 3D (`SCENE_2_HEAD`) y el juego 3D (`SCENE_4_GAMEPLAY`).
+    - Se implementó el cursor seguidor con coordenadas de ratón en tiempo real y posicionamiento automático inicial sobre el slot A.
+    - Se configuró el listener global de clic y teclas de acción para avanzar inmediatamente al nivel 3D.
+

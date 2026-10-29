@@ -212,3 +212,25 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
   2. **Reencuadre de Cámara Focal**:
      - Se ajustó el centro de la cámara en el eje horizontal a `x = 0.55` para garantizar que ambos extremos del logotipo (desde la `B` hasta el `TM`) cuenten con márgenes simétricos idénticos en la pantalla 16:9.
 * **Resultado**: El logotipo "SUPER BUKELE 64" alcanza su máxima claridad tipográfica, con cada letra y bloque tridimensional respirando de forma independiente sin oclusiones indeseadas.
+
+---
+
+### 14. Escena 3: Pantalla SELECT FILE (Homage a Mario 64 con Cursor de Mano 3D y Transición Universal)
+* **Objetivo de diseño**: Reproducir fielmente la tercera fase de la introducción canónica de *Super Mario 64* (segundos 5 a 8 de la secuencia del cartucho), donde el jugador accede al tablero dorado de selección de perfil antes de descender al mundo exterior.
+* **Componentes implementados**:
+  1. **Tablero Dorado con Marco Biselado**:
+     - Estructura CSS centrada con marco perimetral biselado de 24px con doble tonalidad de oro y bronce (`#fde047`, `#a16207`, `#713f12`, `#eab308`).
+     - Título "SELECT FILE" con letras en relieve facetado multicolor (`c-green`, `c-pink`, `c-yellow`).
+  2. **Slots de Perfil "BUKELE A, B, C, D"**:
+     - Cuatro ranuras de guardado con marco de acero biselado e icono de retrato en escala de grises de Nayib Bukele (`assets/img/bukele_file_icon.png`).
+     - Insignia retro "NEW" en tipografía tricolor N64 (cian, amarillo y rojo).
+  3. **Botones de Función Inferiores**:
+     - Bloques cúbicos biselados de colores representativos: verde (`SCORE`), azul (`COPY`), rojo (`ERASE`) y púrpura (`STEREO`).
+  4. **Cursor de Mano 3D N64 Enguantada**:
+     - Modelado e iluminación en Blender (`render_hand_cursor.py`), exportado en PNG transparente de 256x256.
+     - Elemento flotante (`#n64-hand-cursor`) con cursor nativo del sistema ocultado (`cursor: none`), sincronizado en tiempo real con la posición del ratón.
+     - Posicionamiento predeterminado sobre el archivo "BUKELE A" para emular el arranque exacto del juego original.
+  5. **Mecánica de Avance Global (Any-Click Transition)**:
+     - El usuario puede hacer clic en cualquier punto del tablero o presionar `Enter`/`Espacio` para avanzar inmediatamente a la Escena 4 (el gameplay 3D en la pradera con Bukele recolectando Bitcoins).
+* **Resultado**: La transición entre la interacción de la cabeza 3D y la partida jugable es idéntica en estética y ritmo a la obra maestra de Nintendo 64.
+

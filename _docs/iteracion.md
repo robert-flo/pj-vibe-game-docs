@@ -253,4 +253,23 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
      - El jugador puede presionar `Espacio`, `Enter`, `Escape` o hacer clic en cualquier instante para omitir la cinemática y entrar inmediatamente a la Escena 6 (el nivel 3D en la pradera con Bukele).
 * **Resultado**: El arco narrativo introductorio queda completo: Título ➔ Rostro 3D ➔ Selección de Partida ➔ Carta de Gabriela ➔ Vuelo al Castillo ➔ Jugabilidad 3D.
 
+---
+
+### 16. Calibración Fina de la Cinemática y Relevo Espacial de la Tubería Verde N64
+* **Objetivo de diseño**: Perfeccionar el montaje de la cinemática de Lakitu para que comience limpiamente en el cielo azul despejado y termine exactamente en el brote de la tubería verde N64 (segundo 49), permitiendo que el motor WebGL 3D ("Super Bukele 64") tome el relevo in situ sin que Mario llegue a aparecer.
+* **Componentes implementados**:
+  1. **Edición Milimétrica del Clip (`assets/video/lakitu_castle_flight.mp4`)**:
+     - **Corte de Inicio (26.5s del video original)**: Se desplazó 3.5 segundos hacia adelante respecto al corte previo, eliminando los fotogramas del vitral de Peach. El video arranca directamente en el cielo azul de pradera con nubes blancas.
+     - **Corte Final (49.0s del video original)**: Se congeló el punto de término en el instante en que la tubería verde emerge y se fija al suelo, finalizando la cinemática a cero fotogramas de que Mario salga. Duración final: 22.5 segundos.
+  2. **Construcción Procedural de la Tubería Verde N64 en Three.js**:
+     - Se implementó `createWarpPipe(x, z)` en `js/game.js`:
+       - Base terrosa circular (`0xe5c07b`) idéntica a la textura de arena del video.
+       - Tubería cilíndrica de polígonos facetados con material `MeshStandardMaterial` verde brillante (`0x22c55e`).
+       - Borde superior cilíndrico ensanchado e interior hueco oscuro (`0x052e16`).
+       - Volumen de colisión agregado a `colliders` para física sólida.
+  3. **Continuidad del Relevo en Gameplay (`SCENE_6_GAMEPLAY`)**:
+     - Al concluir la cinemática o al saltarla, el jugador aparece posicionado en `(0, 0, 8.8)`, justo al frente de la tubería verde recién emergida en `(0, 11.5)`.
+     - La cámara en 3ª persona se sitúa detrás para ofrecer una perspectiva inmediata de la pradera y la colina de Bitcoins.
+* **Resultado**: Una transición cinemática-jugabilidad 100% coherente y fluida que respeta el ritmo del clásico de 1996 adaptado con humor y fidelidad técnica al universo de Super Bukele 64.
+
 

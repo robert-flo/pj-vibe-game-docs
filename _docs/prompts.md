@@ -252,4 +252,30 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - El flujo secuencial se amplió: `Título` ➔ `Cabeza 3D` ➔ `Select File` ➔ `Carta de Gabriela` ➔ `Vuelo de Lakitu` ➔ `Gameplay 3D`.
     - Se incluyó la opción universal de saltar la cinemática en cualquier momento pulsando `[ESPACIO]` o haciendo clic.
 
+---
+
+## 📌 Prompt 17: Ajuste Milimétrico de Cinemática (Cielo Azul y Tubería N64) y Relevo del Juego 3D
+
+### Texto del Prompt enviado a la IA:
+> *"debes de cortar el inicio del video al menos 3 segundos para que comience en una escena similar a esta [Cielo azul con nubes blancas]. el video deberia terminar en esta escena en el seguno 49 del video original que es desde donde nuestro juego tomaria el relevo https://youtu.be/CL8rDvttmjY?si=JUt3QoInwdGgZM15 [Tubería verde emergiendo en el terreno]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Recortar el inicio del video cinemático al menos 3 segundos adicionales para eliminar cualquier residuo visual del vitral o texto anterior, comenzando exactamente con el plano panorámico del cielo azul intenso y nubes algodonosas.
+  2. Fijar el final del clip exactamente en el segundo 49 del video original, donde la tubería verde N64 termina de brotar del montículo de tierra, justo antes de que el personaje de Mario aparezca.
+  3. Establecer el relevo narrativo y espacial en el motor Three.js: al finalizar el video cinemático, el juego 3D debe tomar el control en ese mismo punto geográfico, situando a Nayib Bukele emergiendo/parado junto a la tubería verde en la pradera.
+* **Diagnóstico y Solución Técnica**:
+  - **Calibración Fotograma a Fotograma con FFmpeg**:
+    - **Punto de Entrada**: Segundo 26.5 del video original (11.5s en la fuente local). Análisis por histograma de color demostró 100% de azul cielo (`#4158FD`) y blanco nube (`#D1EDFC`), con 0% de residuo ocre del vitral.
+    - **Punto de Salida**: Segundo 49.0 del video original (34.0s en la fuente local). Análisis por histograma demostró la presencia del verde de la tubería (`#2EB406` / `#33CC03`) y la arena (`#F6EB74`), cortando milisegundos antes del salto de Mario, garantizando que el personaje de Nintendo nunca figure en pantalla.
+    - **Transcodificación**: Re-renderizado a 1280x720 a 60fps con códec `libx264` (CRF 22) y audio estéreo AAC (`assets/video/lakitu_castle_flight.mp4`, duración exacta 22.50 segundos).
+  - **Relevo 3D en Three.js (`js/game.js`)**:
+    - Se programó la función `createWarpPipe(x, z)` que construye la emblemática Tubería Verde de N64 en coordenadas `(0, 11.5)`:
+      - Parche circular de tierra/arena (`0xe5c07b`) en la base.
+      - Cuerpo cilíndrico verde satinado (`0x22c55e`).
+      - Reborde superior ensanchado de geometría cilíndrica.
+      - Boca interior hueca en verde oscuro profundo (`0x052e16`).
+      - Caja de colisión física en la matriz `colliders`.
+    - Se reconfiguró el punto de spawn de Nayib Bukele en `(0, 0, 8.8)`, justo frente a la boca de la tubería verde, con la cámara en 3ª persona alineada para que la transición desde el último fotograma del video al motor en tiempo real sea continua y transparente.
+
 

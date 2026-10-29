@@ -96,3 +96,17 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
 ### Explicación y Justificación:
 * **Qué se pidió**: Adoptar un enfoque híbrido de vanguardia: generación de la escultura 3D de alta resolución mediante IA generativa visual (Tripo3D), extracción del activo nativo WebGL y posprocesamiento con herramientas de ingeniería local (descompresión `gltf-transform`, decimado geométrico de 1.95 millones a 35k polígonos en Blender 5.2 LTS, centrado de pivote y normalización de escala para Three.js).
 * **Demostración de criterio técnico**: Evidencia la capacidad de combinar herramientas de IA de frontera con pipelines profesionales de optimización de activos 3D para web.
+
+---
+
+## 📌 Prompt 9: Corrección de Orientación Inicial del Modelo y Cinemática del Cursor
+
+### Texto del Prompt enviado a la IA:
+> *"No permite rotar el rostro, el movimiento del mouse no es el adecuado, al principio lo tenías bien (el modelo aparecía mirando hacia el perfil izquierdo a 90 grados)."*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Ajustar la orientación en reposo del modelo 3D importado y restaurar la cinemática de seguimiento del cursor en los 3 ejes (pitch, yaw, roll).
+* **Diagnóstico y Solución Técnica**:
+  - Tripo3D orienta la malla con la cara hacia el eje local `+X`. Al aplicar una rotación genérica de 180°, el rostro quedaba apuntando hacia el costado izquierdo.
+  - Se desacopló la orientación estática del modelo (`-Math.PI / 2`) introduciendo un contenedor `headPivot` en Three.js.
+  - Esto resolvió el bloqueo de ejes (*gimbal lock*), restaurando el control intuitivo del ratón: movimiento horizontal gira el rostro hacia los lados (yaw), vertical hacia arriba/abajo (pitch), y arrastrar con clic añade rotación táctil con retorno elástico suave como en Super Mario 64.

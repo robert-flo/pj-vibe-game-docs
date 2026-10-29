@@ -100,3 +100,18 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
      - Renders de control generados en `turnaround-bukele-tripo-sheet.png`.
      - Captura en vivo confirmando 0 deformaciones y renderizado PBR fotorrealista sobre el fondo de mosaico azul "SUPER BUKELE 64".
 * **Resultado**: La pantalla interactiva de la cara 3D alcanza un estándar gráfico sobresaliente, manteniendo un rendimiento fluido de 60 FPS en el navegador.
+
+
+---
+
+### 8. Desacoplamiento de Ejes en Three.js con `headPivot` y Retorno Elástico
+* **Problema detectado**: El modelo aparecía girado 90° mirando hacia el hombro izquierdo y la rotación con el cursor se sentía trabada y desfasada.
+* **Causa técnica**:
+  - Confusión de coordenadas entre el espacio local de la malla generada por Tripo (+X como vector frontal) y el espacio de cámara de Three.js (-Z como vector de visión).
+  - Rotar directamente la malla provocaba desfase de ejes al interpolar el pitch y yaw simultáneamente.
+* **Solución de ingeniería**:
+  - Se estructuró una jerarquía de dos niveles:
+    - **Nivel hijo (`bukeleHeadMesh`)**: Fija la corrección angular permanente en `-Math.PI / 2` en reposo, garantizando que el rostro mire de frente a la cámara.
+    - **Nivel padre (`headPivot`)**: Recibe limpiamente las coordenadas normalizadas del cursor `(mouseNormalizedX, mouseNormalizedY)` multiplicadas por sus factores angulares y aplica suavizado `lerp` a 10 unidades/delta.
+  - Se implementó interacción de arrastre (*drag*) con resorte elástico: al mantener pulsado el botón izquierdo y arrastrar, la cabeza sigue el tirón del ratón, y al soltarlo regresa elásticamente a la posición de la mirada.
+* **Resultado**: La cabeza de Bukele arranca mirando fijamente al jugador en el centro y se mueve con total naturalidad en todas las direcciones siguiendo el puntero.

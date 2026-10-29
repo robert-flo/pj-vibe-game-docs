@@ -145,3 +145,25 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
        - **BUKELE**: B (Azul), U (Verde), K (Amarillo), E (Rojo), L (Verde), E (Azul).
        - **64**: Extrusión profunda en rojo con laterales y biseles dorados, rotado -15° en la esquina superior derecha.
     4. Se renderizó en canal alfa transparente RGBA (1600x750) con iluminación solar cenital y luz de relleno cálida, integrándolo en la interfaz con animación sutil de flotación (`logoFloat`).
+
+
+---
+
+## 📌 Prompt 12: Mosaico Acolchado N64 para el Fondo de la Escena 2 con Tipografía Oficial de Mario 64
+
+### Texto del Prompt enviado a la IA:
+> *"Al igual en la escena 2, el fondo se puede mejorar con una fuente similar y colocar bukele 64 en el fondo. Revisa la carpeta /home/omarchy/Desktop/assets ahí te dejo la fuente, instálala y úsala y unos gifs que generé si eso te ayuda con la tarea [adjuntando capturas de la cuadrícula de mosaico azul original de Super Mario 64 con SUPER MARIO 64 repetido en celdas acolchadas]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**: Instalar la tipografía oficial del juego original (`TypefaceMario64-ywA93.otf`) en el sistema operativo y en el proyecto web, y sustituir el fondo degradado provisional de CSS por una cuadrícula de mosaico fiel a Nintendo 64 donde cada baldosa muestre "SUPER BUKELE 64" en relieve 3D.
+* **Diagnóstico y Solución Técnica**:
+  1. **Instalación y Configuración de Fuente**:
+     - Se instaló la fuente en `~/.local/share/fonts/` ejecutando `fc-cache -f -v` para disponibilidad en el SO y en Blender.
+     - Se copió a `assets/fonts/TypefaceMario64.otf` y se declaró con `@font-face` en CSS para la interfaz web.
+  2. **Modelado y Renderizado de Baldosa Procedural en Blender (`render_n64_tile.py`)**:
+     - Se modeló una baldosa cuadrada ortográfica (512x512) con shader de viñeta radial (`ShaderNodeVectorMath` distancia de coordenadas UV al centro) mezclado con micro-ruido procedural para evocar la textura de tela/denim azul de la N64.
+     - Se crearon los textos 3D en relieve con biselado: `SUPER` (arriba), `BUKELE` (abajo) en color celeste hielo reflectante, y `64` en rojo Nintendo intenso en el lateral derecho.
+     - Se añadieron ranuras perimetrales oscuras en los 4 bordes para crear el característico efecto de celda acolchada al repetirse.
+  3. **Integración Web y Tipografía Rainbow**:
+     - Se configuró `.head-bg-mosaic` con repetición perfecta a 190x190px.
+     - Se asignó la fuente Mario 64 al botón rainbow `PRESS START` de la esquina inferior izquierda.

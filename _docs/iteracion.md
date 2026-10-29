@@ -160,3 +160,23 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
   5. **Integración Web**:
      - Sustitución de las 50 líneas de CSS obsoleto por la imagen de alta fidelidad `.n64-3d-logo`, combinada con animación suave de respiración `logoFloat`, el rótulo brillante `©2026 Kodigo Academy` y el botón pulsante `PRESS START`.
 * **Resultado**: La pantalla de inicio alcanza una estética 100% fidedigna y nostálgica de Nintendo 64, idéntica en espíritu y paleta al juego original.
+
+
+---
+
+### 11. Cuadrícula de Fondo Acolchada N64 con Fuente Oficial "Typeface Mario 64"
+* **Problema visual detectado**: El fondo de la Escena 2 dependía de un pseudo-elemento CSS con texto repetido rotado a -6deg sobre un degradado genérico. Carecía de la textura granular, el relieve 3D de las letras y la cuadrícula de botones acolchados característica del inicio de Super Mario 64.
+* **Causa técnica**:
+  - CSS estándar no permite aplicar texturas de tela retro ni biseles sombreados tridimensionales por celda que coordinen con una tipografía vintage sin una sobrecarga masiva de DOM.
+* **Solución de ingeniería**:
+  1. **Aprovisionamiento e Instalación de Fuente**:
+     - Extracción e instalación de `TypefaceMario64-ywA93.otf` en el sistema Linux con `fc-cache` e importación web en `pj-vibe-game/assets/fonts/`.
+  2. **Pipeline de Renderizado Ortográfico en Blender (`render_n64_tile.py`)**:
+     - Modelado de baldosa unitaria cuadrada (4x4 unidades mundiales) con cámara ortográfica frontal y resolución 512x512.
+     - **Shader de Baldosa Acolchada**: Gradiente de viñeta radial calculado con `VectorMath.DISTANCE` desde el centro UV (0.5, 0.5), proyectando azul cobalto en el núcleo y azul marino profundo en los extremos, combinado con un mapa de ruido `TexNoise` a 24.0 de escala para reproducir la trama textil de los cartuchos de 64 bits.
+     - **Tipografía en Relieve 3D**: Letras extruidas con caras en celeste hielo saturado (`#5897fa`) y biseles en sombra azul oscuro (`#0b1640`), junto al bloque `64` en rojo bermellón (`#e52521`).
+     - **Costuras de Cuadrícula**: Micro-ranuras oscuras en los 4 bordes exteriores para delimitar cada cuadrante.
+  3. **Montaje en el Juego y Tipografía en el HUD**:
+     - Sustitución del texto CSS por `background-image: url('../assets/img/n64_bg_tile.png')` con tamaño de celda a 190px.
+     - Aplicación de la fuente oficial a los caracteres multicolor de `PRESS START`.
+* **Resultado**: El busto 3D de Bukele ahora reposa sobre la misma e inconfundible cuadrícula azul acolchada de Super Mario 64, logrando cohesión estilística absoluta entre el modelo 3D y su entorno.

@@ -279,3 +279,48 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - Se reconfiguró el punto de spawn de Nayib Bukele en `(0, 0, 8.8)`, justo frente a la boca de la tubería verde, con la cámara en 3ª persona alineada para que la transición desde el último fotograma del video al motor en tiempo real sea continua y transparente.
 
 
+---
+
+## 📌 Prompt 18: Replicación Completa de *Peach's Castle Grounds* (Texturas HD RENDER96), Personaje 3D Fiel a `assets2` y Cierre en las Puertas del Castillo
+
+### Texto del Prompt enviado a la IA:
+> *"Quiero que repliques el exterior completo del Castillo de Peach (Castle Grounds de Super Mario 64) con su geometría original y texturas HD de RENDER96, uses al personaje 3D de Nayib Bukele diseñado según los renders de Desktop/assets2 (saco formal azul marino oscuro, camiseta negra, barba y cabello perfilados) y que el juego concluya cuando Bukele cruza las puertas principales del castillo."*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Sustituir la pradera prototipo por la arquitectura exterior íntegra de *Peach's Castle Grounds* (*Super Mario 64*, Área 1), incluyendo colinas, senderos, foso de agua, puente central de piedra, fachada con vitral de Peach, torreones laterales, torre central alta con asta, cascada, banderas ondeando, los 26 árboles clásicos y carteles de madera interactivos.
+  2. Integrar las texturas remasterizadas de alta definición de `RENDER96-HD-TEXTURE-PACK`.
+  3. Actualizar el modelo jugable en 3ª persona de Nayib Bukele para reflejar con exactitud el diseño de `Desktop/assets2` (saco formal azul marino oscuro, camiseta negra lisa, pantalón azul marino y zapatos cafés) articulado con el busto facial fotorrealista.
+  4. Definir la victoria al llegar al umbral del pórtico del castillo: apertura cinemática de las puertas dobles con emblema estelar dorado, entrada triunfal de Bukele y despliegue del modal final con estadísticas de Bitcoins y tiempo.
+* **Diagnóstico y Solución Técnica**:
+  - **Extracción de Geometría N64 y Texturas HD (`scripts/export_castle_grounds.py` y `scripts/export_castle_actors.py`)**:
+    - Se procesaron las listas de despliegue RSP (`gsSPDisplayList`) de `levels/castle_grounds/areas/1/` (submodelos `1`, `2`, `3` para la torre central `special_level_geo_03`, `4` para sombras alfa `0900BC00`, `7` y `8` para rejillas y `10`), horneando la iluminación direccional original `gdSPDefLights1` en colores de vértice y respetando los modos `G_CC_SHADE` sin textura (`assets/models/castle_grounds.glb`, 3.0 MB).
+    - Se exportaron como actores GLB independientes las hojas de las puertas estelares del castillo (`assets/models/castle_door.glb` con madera pulida, pomo dorado y emblema `zero_star_door_sign.rgba16.png`) y los carteles de madera (`assets/models/wooden_signpost.glb`).
+  - **Construcción del Héroe Jugable (`scripts/build_bukele_hero.py`)**:
+    - Se modeló en Blender `assets/models/bukele_body.glb` con extremidades articuladas (`ArmL`, `ArmR`, `LegL`, `LegR`) y atuendo formal azul marino oscuro con camiseta negra, acoplando en tiempo real una instancia clonada de `assets/models/bukele_head.glb` recortada limpiamente en la base del cuello mediante `onBeforeCompile`.
+  - **Física, Entorno Vivo y Cinemática de Puertas (`js/game.js`)**:
+    - Raycasting de terreno y paredes con transformación de normales de triángulo a espacio de mundo (`transformDirection(matrixWorld)`), garantizando soporte exacto sobre pendientes, puente y pórtico.
+    - Integración de los 26 árboles HD en billboard sobre eje Y (`special_bubble_tree`) con colisión de tronco, cascada con desplazamiento UV continuo (`movtext.inc.c`), foso y laguna animados, 4 banderas rojas ondeantes (`bhvCastleFlagWaving`), 4 carteles cómicos con diálogo estilo N64 (`#sign-dialog`) y 10 Bitcoins con símbolo `₿` en relieve guiando hasta el castillo.
+    - Secuencia `SCENE_DOOR_OPENING` ➔ `SCENE_VICTORY` que abre ambas puertas estelares hacia el pórtico (`±1.62 rad`), guía a Bukele hacia el interior y muestra `#victory-modal` con conteo de Bitcoins y cronómetro `MM:SS`.
+
+---
+
+## 📌 Prompt 19: Extracción y Síntesis de Música, Voces y Efectos Originales desde la ROM de *Super Mario 64*
+
+### Texto del Prompt enviado a la IA:
+> *"Estaba pensando que yo tengo la ROM original, te la puedo dar y la descomprimes... los que yo tengo están en /home/omarchy/Desktop/assetes3 revisa si te sirven, sino reutiliza lo más que puedas de ellos... haz commit de todos los cambios por pequeños que sean."*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Aprovechar la ROM original norteamericana (`.V64`) provista localmente por el usuario en `/home/omarchy/Desktop/assetes3` para extraer el material sonoro auténtico de *Super Mario 64* (música de exteriores del castillo, fanfarria de victoria, voces de salto y efectos de monedas y puertas), manteniendo los binarios de la ROM estrictamente fuera del control de versiones.
+  2. Registrar el progreso mediante commits atómicos y granulares por cada cambio realizado.
+* **Diagnóstico y Solución Técnica**:
+  - **Conversión Byte-Swap y Desempaquetado de Audio**:
+    - Se convirtió la imagen `.V64` (formato byte-swapped `0x37804012`) al orden big-endian `.z64` (`0x80371240`) en un directorio de trabajo externo al repositorio, ejecutando el desensamblador de activos de `Render96ex` para extraer los bancos de muestras PCM `.aiff`, tablas JSON de instrumentos y secuencias musicales `.m64`.
+  - **Sintetizador de Secuencias N64 (`scripts/render_sm64_audio.py`)**:
+    - Se desarrolló un motor de renderizado de audio en Python/NumPy que interpreta las secuencias `.m64` desencriptadas junto con el banco `22` y la articulación exacta `noteDuration` de `seqplayer.c`, generando pistas MP3 limpias y normalizadas en `assets/audio/sm64/`:
+      - `castle_grounds_bgm.mp3` (tema exterior de los jardines del castillo, `03_level_grass.m64`).
+      - `star_fanfare.mp3` (fanfarria clásica de obtención de estrella al cruzar las puertas, `01_cutscene_collect_star.m64`).
+      - `coin.mp3` (sonido original `.sound_general_coin` al recolectar cada Bitcoin).
+      - `door_open.mp3` (sonido original de apertura de las puertas de madera del castillo `.sound_general_open_wood_door`).
+      - `mario_0C.mp3` (*"Here we go!"*), `mario_yah.mp3`, `mario_hoohoo.mp3` y voces clásicas de salto.

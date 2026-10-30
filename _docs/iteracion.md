@@ -304,3 +304,35 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
      - Decodificación de pistas `.m64` acoplada al banco de instrumentos `22` respetando la frecuencia base `gNoteFrequencies` y la fracción de articulación `noteDuration` de `seqplayer.c`.
      - Generación y verificación de niveles (`volumedetect`) de `castle_grounds_bgm.mp3` (`03_level_grass`), `star_fanfare.mp3` (`01_cutscene_collect_star`), `coin.mp3` (`.sound_general_coin`), `door_open.mp3` (`.sound_general_open_wood_door`), `mario_0C.mp3` (*"Here we go!"*) y las 5 voces clásicas de salto.
 * **Resultado**: Identidad sonora 100% fiel a Nintendo 64 integrada en cada acción de salto, recolección de Bitcoins, recorrido por los jardines y apertura triunfal de las puertas del castillo.
+
+---
+
+## 📸 Galería Histórica del Proceso Evolutivo (Antes y Después)
+
+Las siguientes capturas reales tomadas directamente del motor durante las sesiones de desarrollo documentan la evolución paso a paso desde el prototipo geométrico inicial hasta el nivel completo:
+
+### Etapa A — Prototipo Inicial de Colina y Tubería de Relevo (Iteración 16)
+![Etapa 1: Colina prototipo y tubería verde N64]({{ '/assets/images/proceso/etapa1_colina_pipe.png' | relative_url }})
+*Terreno procedural preliminar donde se validó por primera vez el corte exacto en el segundo 49.0 del vuelo de Lakitu hacia la tubería verde N64.*
+
+### Etapa B — Primera Extracción N64: Fallo de Normales "Arcoíris" y Sombras Opacas (Inicio Iteración 17)
+![Etapa 2: Bug de terreno arcoíris y sombras negras]({{ '/assets/images/proceso/etapa2_bug_arcoiris_sombras.png' | relative_url }})
+*Al importar los arreglos `Vtx` crudos sin evaluar las estructuras `gdSPDefLights1`, los bytes con signo de las normales se interpretaron como colores RGB psicodélicos y las sombras de árboles (`0900BC00`) se dibujaron como rectángulos negros sólidos.*
+
+### Etapa C — Iluminación y Canal Alfa Corregidos, previo a Torre Central y Actores
+![Etapa 3: Iluminación corregida sin torre central ni árboles]({{ '/assets/images/proceso/etapa3_sin_torre_ni_actores.png' | relative_url }})
+*Tras hornear la luz direccional N64 y habilitar `polygonOffset` con transparencia en las sombras, la inspección visual reveló que faltaban el submodelo `areas/1/3` (torre central alta), las puertas estelares, la cascada, las 4 banderas y los 26 árboles.*
+
+### Etapa D — *Peach's Castle Grounds* Completo con Texturas HD `RENDER96`
+![Etapa 4: Exterior completo del Castillo de Peach HD]({{ '/assets/images/proceso/etapa4_castillo_completo_hd.png' | relative_url }})
+*Recorrido recursivo de listas RSP (`gsSPDisplayList`) completado: torre central con asta, vitral de Peach, 4 banderas rojas ondeando, cascada animada, 26 árboles HD en billboard sobre sus sombras circulares y los 10 Bitcoins `₿` guiando hacia el puente.*
+
+### Etapa E — Personaje 3D Nayib Bukele (`assets2`), Bitcoin `₿` y Carteles Interactivos
+![Etapa 5: Bukele assets2 junto a Bitcoin y cartel interactivo]({{ '/assets/images/proceso/etapa5_bukele_cartel_bitcoin.png' | relative_url }})
+*Héroe jugable con saco azul marino oscuro y camiseta negra, busto 3D ensamblado mediante shader GLSL, símbolo `₿` orientado verticalmente y diálogo cómico estilo N64 al acercarse a los carteles de madera.*
+
+### Etapa F — Cinemática de Apertura de Puertas Estelares y Modal de Victoria
+![Etapa 6: Apertura de puertas estelares hacia el pórtico]({{ '/assets/images/proceso/etapa6_puertas_abiertas.png' | relative_url }})
+
+![Etapa 7: Pantalla final de victoria con estadísticas]({{ '/assets/images/proceso/etapa7_modal_victoria.png' | relative_url }})
+*Al cruzar el umbral del pórtico, ambas hojas estelares se abren sobre la alfombra roja mientras Bukele camina al interior del castillo acompañado de la fanfarria original `star_fanfare.mp3`, culminando en el resumen de Bitcoins y cronómetro.*

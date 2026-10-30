@@ -273,3 +273,34 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
 * **Resultado**: Una transición cinemática-jugabilidad 100% coherente y fluida que respeta el ritmo del clásico de 1996 adaptado con humor y fidelidad técnica al universo de Super Bukele 64.
 
 
+---
+
+### 17. Replicación Completa de *Peach's Castle Grounds* (RENDER96 HD), Héroe 3D Fiel a `assets2` y Cinemática de Puertas Estelares
+* **Objetivo de diseño**: Construir el exterior completo y auténtico del Castillo de Peach (*Castle Grounds*, Área 1 de *Super Mario 64*) con texturas de alta definición `RENDER96-HD-TEXTURE-PACK`, integrar el modelo 3D de cuerpo entero de Nayib Bukele fiel a `Desktop/assets2` y cerrar el arco jugable cuando el jugador abre y cruza las grandes puertas estelares del castillo.
+* **Componentes implementados**:
+  1. **Extracción Arquitectónica Completa (`scripts/export_castle_grounds.py`, `scripts/export_castle_actors.py`)**:
+     - Recorrido en orden exacto de las listas de despliegue RSP (`gsSPDisplayList`) de `levels/castle_grounds/areas/1/` incluyendo terreno, senderos, puente de piedra, fachada con vitral de Peach, torreones laterales, **torre central alta con asta (`areas/1/3`, `special_level_geo_03`)**, calcomanías alfa de sombra (`areas/1/4`, `0900BC00`) y rejillas sumergidas (`areas/1/7` y `8`).
+     - Horneado de iluminación direccional `gdSPDefLights1` en colores de vértice y soporte de materiales sin textura (`G_CC_SHADE`) en `assets/models/castle_grounds.glb` (3.0 MB).
+     - Exportación de actores 3D independientes: `assets/models/castle_door.glb` (puertas de madera pulida con pomo dorado y emblema estelar simétrico `zero_star_door_sign.rgba16.png`) y `assets/models/wooden_signpost.glb`.
+  2. **Personaje Jugable 3D Nayib Bukele (`scripts/build_bukele_hero.py`)**:
+     - Cuerpo articulado en Blender (`assets/models/bukele_body.glb`) con saco formal azul marino oscuro, camiseta negra lisa, pantalón azul marino y zapatos cafés conforme a `Desktop/assets2`.
+     - Carga única e instanciación clonada de `assets/models/bukele_head.glb` asentada directamente sobre el cuello del saco con recorte limpio de busto mediante `onBeforeCompile`.
+  3. **Entorno Vivo, Física en Espacio de Mundo y Coleccionables (`js/game.js`)**:
+     - Transformación de normales de impacto de raycast a espacio de mundo (`transformDirection(matrixWorld)`) en `sampleGround()` y `wallAhead()`, garantizando colisión sólida sobre pendientes, puente y muros, con guardia de gravedad previa a la carga del nivel (`castleLoaded`).
+     - 26 árboles oficiales con texturas HD (`tree_left_side.rgba16.png`, `tree_right_side.rgba16.png`) en billboard sobre eje Y (`special_bubble_tree`) y colisión cilíndrica de tronco.
+     - Cascada del acantilado (`movtext.inc.c`), foso y laguna con desplazamiento UV continuo, 4 banderas rojas ondeando en las torres (`bhvCastleFlagWaving`), 4 carteles cómicos interactivos (`#sign-dialog`) y 10 Bitcoins con emblema `₿` orientado verticalmente a lo largo del recorrido.
+  4. **Secuencia de Victoria en el Pórtico (`SCENE_DOOR_OPENING` ➔ `SCENE_VICTORY`)**:
+     - Al alcanzar el pórtico (`Z ≈ -29.5, Y > 7.2`), ambas puertas estelares pivotan hacia afuera (`±1.62 rad`) con temporización independiente de fotogramas (`performance.now()`), Bukele camina hacia el interior del castillo y se despliega `#victory-modal` con Bitcoins recolectados (`X / 10`) y tiempo total (`MM:SS`).
+* **Resultado**: Una recreación tridimensional fiel, nítida y viva de los jardines del Castillo de Peach en el navegador.
+
+---
+
+### 18. Extracción y Síntesis de Música, Voces y Efectos Auténticos desde la ROM Original de *Super Mario 64*
+* **Objetivo de diseño**: Reemplazar los efectos provisionales por la banda sonora y muestras acústicas auténticas de *Super Mario 64* a partir de la ROM norteamericana original del usuario, manteniendo estricta higiene del repositorio (cero binarios de ROM versionados).
+* **Componentes implementados**:
+  1. **Conversión `.V64` ➔ `.z64` y Extracción de Bancos de Audio**:
+     - Conversión byte-swapped (`0x37804012` a big-endian `0x80371240`) fuera del repositorio Git y extracción automatizada de bancos PCM `.aiff`, definiciones JSON de instrumentos y secuencias `.m64`.
+  2. **Motor de Síntesis de Secuencias `.m64` (`scripts/render_sm64_audio.py`)**:
+     - Decodificación de pistas `.m64` acoplada al banco de instrumentos `22` respetando la frecuencia base `gNoteFrequencies` y la fracción de articulación `noteDuration` de `seqplayer.c`.
+     - Generación y verificación de niveles (`volumedetect`) de `castle_grounds_bgm.mp3` (`03_level_grass`), `star_fanfare.mp3` (`01_cutscene_collect_star`), `coin.mp3` (`.sound_general_coin`), `door_open.mp3` (`.sound_general_open_wood_door`), `mario_0C.mp3` (*"Here we go!"*) y las 5 voces clásicas de salto.
+* **Resultado**: Identidad sonora 100% fiel a Nintendo 64 integrada en cada acción de salto, recolección de Bitcoins, recorrido por los jardines y apertura triunfal de las puertas del castillo.

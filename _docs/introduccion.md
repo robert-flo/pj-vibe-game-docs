@@ -1,6 +1,6 @@
 ---
 title: 1. Introducción y Concepto
-description: "Contexto de la actividad, concepto del juego Super Bukele 64 y justificación de herramientas."
+description: "Contexto de la actividad, evolución del concepto Super Bukele 64 y justificación de herramientas."
 layout: default
 nav_order: 1
 permalink: /docs/introduccion/
@@ -9,41 +9,42 @@ permalink: /docs/introduccion/
 # 1. Introducción y Concepto
 
 ## 🎯 Contexto y Objetivo
-Esta actividad individual de **Semana 2** tiene como propósito aplicar técnicas de **vibecoding** y **prompt engineering** utilizando la inteligencia artificial como copiloto de desarrollo, demostrando:
-* Dirección y control mediante prompts progresivos y claros.
-* Comprensión del código generado.
-* Iteración sobre la lógica, controles y estética.
-* Capacidad de validación y resolución de errores.
+Esta actividad individual de **Semana 2** tiene como propósito aplicar técnicas de **vibecoding** y **prompt engineering** utilizando la inteligencia artificial como copiloto de desarrollo, demostrando de forma trazable **todo el proceso evolutivo** (y no únicamente el producto final):
+* Dirección y control mediante **19 prompts progresivos** documentados paso a paso.
+* Comprensión profunda de la arquitectura, matemáticas 3D, shaders y síntesis de audio.
+* Iteración continua sobre geometría, iluminación, texturas, controles e interfaz.
+* Diagnóstico empírico y corrección verificada de errores visuales y físicos reales.
 
 ---
 
-## 🎮 Concepto: *Super Bukele 64: Misión Rescate*
+## 🎮 Concepto y Evolución del Alcance: *Super Bukele 64*
 
-### Inspiración
-El proyecto toma como referencia el icónico inicio de **Super Mario 64** (el patio del castillo y la primera misión de *Bob-omb Battlefield*). En lugar de intentar replicar un juego completo e inabarcable, se diseñó una **Vertical Slice (Demo de 1 Estrella)**: un micro-nivel 3D autocontenido, completamente jugable y pulido, con objetivo de victoria claro.
+### De un *Vertical Slice* Prototipo al Exterior Completo del Castillo
+El proyecto partió como una *Vertical Slice* acotada (una colina geométrica con 5 Bitcoins y una estrella en la cima) para validar el bucle base en Three.js. Una vez consolidados los cimientos, la dirección iterativa permitió expandir el alcance hasta **replicar fielmente toda la secuencia introductoria y el exterior completo del Castillo de Peach (*Castle Grounds* de *Super Mario 64*)**:
 
-### Trama y Personajes
-* **El Héroe (Nayib Bukele)**: Modelado en estilo *low-poly* reminiscente de la era Nintendo 64, con sus rasgos distintivos (traje azul marino formal, camiseta oscura, barba y bigote recortados, y cabello engominado hacia atrás).
-* **El Objetivo (Princesa Gabriela)**: Esposa del protagonista y Primera Dama, quien ha sido encerrada en la fortaleza por el villano Bowser.
-* **El Antagonista (Bowser)**: Ha bloqueado el acceso al castillo con sellos mágicos que solo se rompen al reunir la primera **Estrella Dorada**.
-* **Coleccionables (Bitcoins Dorados)**: Monedas doradas flotantes con el símbolo de Bitcoin que giran en el escenario y aumentan la puntuación del jugador.
-* **La Estrella de Victoria**: Una estrella tridimensional dorada situada en lo alto de la colina que, al ser alcanzada, activa la cinemática de victoria y el mensaje de rescate.
+1. **Secuencia Introductoria Canónica de 5 Escenas**:
+   * **Escena 1**: Logotipo 3D en bloques facetados (*SUPER BUKELE 64*) sobre mosaico azul N64.
+   * **Escena 2**: Rostro 3D interactivo de Nayib Bukele con seguimiento elástico del ratón e iluminación de estudio.
+   * **Escena 3**: Tablero dorado *SELECT FILE* (`BUKELE A–D`) con cursor de mano enguantada 3D.
+   * **Escena 4**: Pergamino real donde la Primera Dama Gabriela invita a Nayib al castillo con arpegio musical clásico.
+   * **Escena 5**: Cinemática de vuelo de Lakitu calibrada al fotograma exacto en que emerge la tubería verde N64 (segundo 49.0), cediendo el relevo sin cortes al motor WebGL 3D.
+2. **Escena 6 — Exterior Completo de *Peach's Castle Grounds* (Texturas HD)**:
+   * Geometría auténtica de los jardines, colinas, foso perimetral, puente central de piedra, fachada con vitral, torreones con 4 banderas ondeantes, torre central alta con asta, cascada animada, 26 árboles clásicos con texturas HD de `RENDER96`, 4 carteles cómicos de madera con diálogo estilo N64 y **10 Bitcoins dorados (`₿`)** que guían el camino.
+3. **El Héroe (Nayib Bukele)**:
+   * Evolucionó en tres generaciones documentadas: (a) maniquí low-poly ceremonial en Blender (`bukele.glb`), (b) busto de alta resolución optimizado de 1.95M a 35k polígonos (`bukele_head.glb`) para la pantalla interactiva, y (c) cuerpo articulado formal con saco azul marino oscuro, camiseta negra y zapatos cafés (`bukele_body.glb`) ensamblado con la cabeza 3D recortada limpiamente en GPU mediante shader GLSL.
+4. **Cierre Narrativo en las Puertas Estelares**:
+   * Al cruzar el puente y llegar al pórtico real, ambas puertas de madera con emblema estelar dorado se abren hacia afuera sobre la alfombra roja con su sonido original de madera, Bukele entra al castillo, suena *"Here we go!"* seguido de la fanfarria clásica de victoria y se despliega el resumen estadístico de Bitcoins recolectados y tiempo de recorrido (`MM:SS`).
 
 ---
 
-## 🛠️ Decisiones Iniciales y Entorno de Desarrollo
+## 🛠️ Decisiones Tecnológicas y Pipeline de Herramientas
 
-### 1. ¿Por qué Three.js en el navegador en lugar de Python?
-Aunque la guía inicial de la asignatura sugería Python (como Pygame), el catedrático permitió libre elección tecnológica. Se optó por **Three.js (WebGL)** en el navegador por razones clave:
-1. **Accesibilidad inmediata para el evaluador**: El catedrático puede abrir el juego directamente desde un enlace de GitHub Pages en cualquier navegador (Chrome, Firefox, Safari) sin instalar intérpretes de Python ni lidiar con dependencias de librerías locales.
-2. **Capacidades 3D reales**: Permite una cámara en tercera persona dinámica, iluminación direccional y sombras, y renderizado espacial fiel al homenaje de Mario 64.
-3. **Audio sin dependencias externas pesadas**: Empleo de la **Web Audio API** para sintetizar efectos retro en tiempo real directamente desde el navegador.
+### 1. ¿Por qué Three.js (WebGL) en el navegador en lugar de un ejecutable local?
+Aunque la guía inicial sugería opciones de escritorio como Python/Pygame, el catedrático permitió libre elección tecnológica. Se eligió **Three.js (WebGL ES Modules)** por tres razones académicas y prácticas:
+1. **Evaluación instantánea sin fricción**: El catedrático puede jugar e inspeccionar el proyecto en un clic desde GitHub Pages sin instalar intérpretes ni dependencias locales.
+2. **Renderizado 3D en tiempo real**: Cámara orbital en tercera persona, raycasting espacial en espacio de mundo, materiales con canal alfa, billboards en eje Y y modificación de shaders (`onBeforeCompile`).
+3. **Sistema de Audio Híbrido**: Combina un sintetizador procedural en **Web Audio API** (`RetroAudio`) como respaldo sin dependencias con pistas y efectos originales extraídos y sintetizados desde secuencias `.m64` y muestras PCM `.aiff` de *Super Mario 64*.
 
-### 2. Implementación de las Skills Especializadas
-Para garantizar que el juego no fuese un simple conjunto de primitivas genéricas, se aplicó rigurosamente el protocolo de las dos skills de desarrollo:
-* **`game-builder`**:
-  * Definición formal del **Stage A**: `BRIEF.md` (bloqueado), matriz de referencias visuales bloqueadas en `refs-locked/` (`ref-01` a `ref-04`), registro de activos en `art/LEDGER.md` y la barra visual `art/BAR.md` (criterios universales C1–C5 + C6 tipografía N64 + C7 vestimenta ceremonial).
-* **`game-builder-blender-assets`**:
-  * En lugar de construir al personaje con cajas en el motor web, se ejecutó un pipeline en **Blender 5.2.2 LTS** (`build_bukele.py`).
-  * Se modeló a Nayib Bukele en Blender con su chaquetón ceremonial negro, cuello mandarín con bordados dorados, la banda presidencial azul y blanco con el escudo nacional, peinado y barba característica.
-  * Superó la compuerta de validación (*turnaround gate*) con renders frontal, lateral y posterior (`artifacts/stills/`), exportándose como asset oficial **`assets/models/bukele.glb`** que se carga en Three.js con `GLTFLoader`.
+### 2. Pipeline Multi-Herramienta Guiado por Metodología Estructurada
+* **Diseño por Compuertas Visuales (`BRIEF.md`, `PLAN.md`, `art/BAR.md`, `art/LEDGER.md`)**: Ningún activo se dio por válido sin verificación visual mediante capturas en vivo desde el motor (`scripts/shot.sh` con Chromium headless + SwiftShader WebGL).
+* **Modelado y Conversión Automatizada en Blender 5.2 LTS (`scripts/*.py`)**: Scripts reproducibles en Python para generar logotipos 3D, cursor enguantado, cuerpo articulado de Bukele y conversión de listas de despliegue RSP de Nintendo 64 (`gsSPDisplayList`, `gdSPDefLights1`) a formato estándar `.glb`.

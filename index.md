@@ -3,31 +3,31 @@ layout: home
 hero:
   name: Super Bukele 64
   text: Vibecoding Guiado con IA
-  tagline: "Desarrollo de un mini-juego 3D en Three.js como homenaje a Super Mario 64. Actividad individual Semana 2."
+  tagline: "Documentación histórica e ingeniería iterativa de un homenaje 3D en Three.js a Super Mario 64: desde el primer prototipo hasta Peach's Castle Grounds HD."
   actions:
     - theme: brand
-      text: 📖 Ver Documentación y Prompts
+      text: 📖 Ver Proceso Histórico y Prompts
       link: /docs/introduccion/
     - theme: alt
       text: 🎮 Jugar Demo en Vivo
       link: https://robert-flo.github.io/pj-vibe-game/
       target: _blank
 features:
-  - title: 🧠 Vibecoding Guiado
-    details: Desarrollo iterativo utilizando IA como copiloto mediante prompts progresivos, refinamiento de instrucciones y validación de código.
-  - title: 🌐 Three.js & WebGL 3D
-    details: Mini-juego 3D en el navegador sin instalación previa. Físicas de salto, cámara en tercera persona, coleccionables y estética low-poly N64.
-  - title: 📊 Cumplimiento de Rúbrica
-    details: Registro completo de prompts, análisis de decisiones técnicas, corrección de bugs y reflexión académica individual.
+  - title: 🧠 Proceso Trazable (19 Prompts y 18 Iteraciones)
+    details: Bitácora íntegra de decisiones de arquitectura, errores reales detectados en capturas y soluciones aplicadas paso a paso, demostrando dirección técnica sobre la IA.
+  - title: 🏰 Three.js, Blender & Shaders GLSL
+    details: Secuencia completa de 6 escenas, exterior íntegro de Peach's Castle Grounds con texturas HD RENDER96, personaje 3D articulado y física por raycasting en espacio de mundo.
+  - title: 🎵 Síntesis Sonora y Validación Empírica
+    details: Decodificación de secuencias musicales .m64, Web Audio API de respaldo, pruebas automatizadas WebGL y reflexión crítica alineada a la rúbrica académica.
 ---
 
-# Acerca de la Entrega
+# Acerca de la Entrega Académica
 
-Este sitio web documenta el proceso de co-creación y desarrollo de **Super Bukele 64: Misión Rescate**, un mini-juego 3D interactivo desarrollado para la actividad individual de **Vibecoding Guiado (Semana 2)**.
+Este sitio documenta **todo el recorrido histórico de construcción** de **Super Bukele 64**, desarrollado para la actividad individual de **Vibecoding Guiado (Semana 2)**.
 
-El objetivo pedagógico es demostrar que el estudiante no solo genera código con IA mediante un "one-shot", sino que **dirige, refina, comprende y valida** cada iteración del software.
+Más allá del juego terminado, esta memoria preserva cada etapa intermedia —incluyendo los fallos visuales, matemáticos y de físicas que surgieron en el camino y cómo fueron diagnosticados y resueltos— para evidenciar comprensión, criterio de ingeniería y control progresivo sobre la herramienta generativa.
 
 ### 🔗 Enlaces Rápidos
-* Repositorio del Juego: [github.com/robert-flo/pj-vibe-game](https://github.com/robert-flo/pj-vibe-game)
-* Repositorio de la Documentación: [github.com/robert-flo/pj-vibe-game-docs](https://github.com/robert-flo/pj-vibe-game-docs)
-* Demo en Vivo: [Jugar ahora](https://robert-flo.github.io/pj-vibe-game/)
+* Repositorio del Juego (commits granulares): [github.com/robert-flo/pj-vibe-game](https://github.com/robert-flo/pj-vibe-game)
+* Repositorio de la Documentación (historial completo): [github.com/robert-flo/pj-vibe-game-docs](https://github.com/robert-flo/pj-vibe-game-docs)
+* Demo Interactiva en Vivo: [robert-flo.github.io/pj-vibe-game](https://robert-flo.github.io/pj-vibe-game/)

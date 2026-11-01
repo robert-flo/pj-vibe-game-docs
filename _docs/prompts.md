@@ -343,3 +343,24 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - Se incorporó `#touch-controls` con D-Pad direccional en la esquina inferior izquierda y botón de salto "A" estilo N64 en la esquina inferior derecha, mostrándose automáticamente en dispositivos con soporte táctil (`'ontouchstart' in window || navigator.maxTouchPoints > 0`).
     - Se vincularon eventos `pointerdown`, `pointerup` y `pointercancel` para evitar atascos de pulsación y `touch-action: none` para suprimir el scroll accidental de la página.
     - Se añadió soporte de arrastre gestual (`touchstart` y `touchmove`) para permitir orbitar la cámara 3D alrededor de Bukele con un dedo, así como rotar el rostro en la Escena 2.
+
+
+---
+
+## 📌 Prompt 21: Transformación Anatómica Estilo Fortnite, Banda Sonora Completa en Menús, Inversión de Cascada y Cámara Vertical
+
+### Texto del Prompt enviado a la IA:
+> *"Me encanta el documento que has generado, pero vamos a hacerle algunas mejoras finales: primero el personaje principal Bukele se siente muy antinatural y desproporcionado, quisiera que tuviera una apariencia más como un player de Fortnite, más humano y con movimientos fluidos menos acartonados. La segunda mejora es que la escena 1, 2 y 3 no tienen audio de fondo, deberían tener la misma música del juego original. La tercera mejora es que el juego no se puede jugar desde móviles (desbloquear avance o advertencia). La cuarta es que la cascada va en sentido invertido, no cae sino que sube. Y la quinta es poder mover la cámara arriba y abajo con teclado o arrastre para ver el castillo durante la presentación."*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Rediseñar integralmente el modelo 3D de Bukele y su cinemática para eliminar el efecto "cabezón de tabla" y otorgarle anatomía atlética estilizada tipo skin de *Fortnite* con flexión natural de codos y rodillas.
+  2. Sintetizar e integrar la música original de Nintendo 64 para las Escenas 1 y 2 (Title Theme, `02_menu_title_screen.m64`) y la Escena 3 (File Select Theme, `21_menu_file_select.m64`).
+  3. Desbloquear el avance táctil en la Escena 2 (que causaba que los usuarios en celular quedaran atrapados en la pantalla de la cabeza) e integrar un aviso elegante de orientación horizontal.
+  4. Corregir el desplazamiento UV de la cascada para que fluya de arriba hacia abajo.
+  5. Dotar a la cámara 3D de inclinación vertical (*pitch*) mediante teclas R/F y arrastre vertical con ratón o dedo táctil para poder contemplar el castillo en todo su esplendor.
+* **Diagnóstico y Solución Técnica**:
+  - **Hero Rigging y Anatomía Humana (`scripts/build_bukele_hero.py`, `assets/models/bukele_body.glb`)**: Se escaló la cabeza de Bukele a una proporción real de 7.5 cabezas de altura (`HS = 0.52`). Se construyó un torso atlético tridimensional con pectorales, espalda en V (*V-taper*), deltoides, cintura ceñida con cinturón y hebilla dorada, pañuelo de solapa, reloj de oro en la muñeca izquierda y zapatillas deportivas 3D con suela y puntera. Se creó una jerarquía FK de extremidades de 2 huesos (`ArmL -> ForearmL`, `LegL -> ShinL`).
+  - **Animación Cinemática Orgánica (`js/game.js: animateLimbs`)**: Se programó la flexión de rodilla hacia atrás en la pierna retrasada (`Math.abs(swing) * 1.35`), braceo de corredores con codos en ángulo deportivo (35° a 60°), balanceo vertical de cadera, inclinación de avance al correr (`lean`) y ciclo de respiración viva en estado *Idle*.
+  - **Audio Original en Menús (`assets/audio/sm64/`)**: Síntesis directa desde los bancos de samples oficiales de SM64 para `title_screen_bgm.mp3` y `file_select_bgm.mp3`.
+  - **Cascada y Cámara Vertical (`js/game.js`)**: Signo corregido en `waterfallTex.offset.y += delta * 1.35`. Se implementó `cameraPitch` con rango [-0.35, 0.72] rad para inclinar la vista hacia el cielo y las torres del castillo.

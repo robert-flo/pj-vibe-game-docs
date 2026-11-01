@@ -86,3 +86,42 @@ Para validar que cada iteración funcionara de verdad (y no solo compilara sin e
 * **Descripción del fallo**: El cartel `#sign-dialog` aparecía vacío al iniciar el nivel y el símbolo `₿` en las caras de los Bitcoins lucía rotado 90°/invertido.
 * **Causa técnica**: En `css/style.css` cada componente definía su propio modificador `.hidden` y faltaba `.sign-dialog.hidden`; por su parte, las tapas UV de `CylinderGeometry` al rotar `disc.rotation.x = Math.PI / 2` mapean el eje vertical del mundo sobre `-X` del canvas.
 * **Solución aplicada**: Se añadió `.sign-dialog.hidden { display: none; }` con `@keyframes signDialogPop` conservando `translateX(-50%)`, y se rotó el contexto 2D del canvas `-Math.PI / 2` para que `₿` se lea derecho en ambas caras de cada moneda.
+
+
+---
+
+### Incidencia 10: Desproporción Anatómica del Héroe y Movimiento Acartonado
+* **Síntoma**: La cabeza de Bukele lucía gigantesca (estilo *bobblehead* de 4 cabezas de altura), el torso era plano como una tabla de perfil y las extremidades giraban rígidamente sin doblar codos ni rodillas.
+* **Causa raíz**: El modelo inicial usaba primitivas geométricas mínimas y un único hueso por miembro (`ArmL`, `LegL`).
+* **Solución aplicada**:
+  1. Reducción de escala de cabeza al 52% (`HS = 0.52`) para alcanzar proporciones anatómicas estilizadas tipo *Fortnite* de 7.5 cabezas.
+  2. Modelado de torso con volumen pectoral de 0.32m de profundidad, V-taper, cinturón con hebilla, pañuelo de solapa, reloj y zapatillas 3D.
+  3. Jerarquía FK de 2 segmentos (`LegL -> ShinL`, `ArmL -> ForearmL`) con flexión natural de rodilla retrasada (`Math.abs(swing) * 1.35`), braceo atlético y balanceo en reposo.
+
+---
+
+### Incidencia 11: Silencio en las Escenas de Menú (1, 2 y 3)
+* **Síntoma**: Las pantallas de Título, Cabeza 3D y Selección de Partida no tenían música de fondo.
+* **Causa raíz**: La política de *autoplay* de los navegadores bloquea audio no interactivo y las secuencias correspondientes no habían sido sintetizadas.
+* **Solución aplicada**: Síntesis directa mediante `render_sm64_audio.py` de `02_menu_title_screen.m64` (Bank 11) y `21_menu_file_select.m64` (Bank 24). Se inicializan de forma transparente tras el primer clic/toque del usuario y realizan cross-fade al avanzar entre pantallas.
+
+---
+
+### Incidencia 12: Bloqueo de Avance en Celulares en la Escena 2 (Cabeza 3D)
+* **Síntoma**: En dispositivos móviles táctiles, el usuario podía rotar la cabeza pero no podía avanzar a la partida.
+* **Causa raíz**: El botón `btnScene2Start` solo tenía escucha de evento `click` (el cual es cancelado en pantallas táctiles cuando `touchmove` llama a `preventDefault`), y el listener global de `touchstart` no contemplaba la transición de `SCENE_2_HEAD`.
+* **Solución aplicada**: Vinculación de `pointerdown` y detección de toque en pantalla con un umbral de interacción de 800 ms (`performance.now() - scene2EnterTime > 800`), permitiendo avanzar fluidamente con un solo tap.
+
+---
+
+### Incidencia 13: Cascada Invertida con Flujo Ascendente
+* **Síntoma**: El agua de la cascada subía hacia la montaña en lugar de caer al foso.
+* **Causa raíz**: Los índices de vértices en `buildCastleWaterfall` generaron un mapeo UV cuyo incremento en `offset.y` desplazaba los texels hacia arriba.
+* **Solución aplicada**: Se cambió el decremento por incremento (`waterfallTex.offset.y += delta * 1.35`), logrando que la corriente baje de forma natural hacia la laguna.
+
+---
+
+### Incidencia 14: Cámara Rígida sin Posibilidad de Mirar hacia el Castillo
+* **Síntoma**: Solo se podía rotar la cámara en el plano horizontal (Q/E), impidiendo alzar la vista para ver el vitral de Peach, las torres y las banderas.
+* **Causa raíz**: La cámara en 3ª persona carecía de variable de elevación (*pitch*).
+* **Solución aplicada**: Implementación de `cameraPitch` acotada entre [-0.35, 0.72] radianes, controlada con teclas R/F o arrastre vertical con ratón o touch.

@@ -357,3 +357,12 @@ Las siguientes capturas reales tomadas directamente del motor durante las sesion
 ### Etapa G — Soporte Móvil Responsivo y Controles Táctiles Virtuales
 ![Etapa 8: Controles táctiles virtuales en vista móvil]({{ '/assets/images/proceso/etapa8_controles_tactiles_moviles.png' | relative_url }})
 *Cruceta D-Pad y botón de salto N64 integrados para navegación táctil sin teclado, con reencuadre dinámico de la cámara orbital y HUD responsivo.*
+
+
+### Etapa H — Anatomía Atlética Estilo Fortnite de Nayib Bukele y Animación Fluida
+![Etapa 9: Bukele estilo Fortnite con proporciones humanas y zapatillas 3D]({{ '/assets/images/proceso/etapa9_bukele_fortnite_style.png' | relative_url }})
+*Rediseño anatómico del héroe jugable: escala de cabeza corregida a proporción humana de 7.5 cabezas (`HS = 0.52`), torso con volumen tridimensional real y V-taper, saco entallado con pañuelo blanco en bolsillo, cinturón con hebilla de oro, reloj en muñeca izquierda, zapatillas 3D y sistema cinemático con flexión de rodilla (`Shin`) y codo (`Forearm`).*
+
+### Etapa I — Inclinación Vertical de Cámara (*Pitch*) para Admirar el Castillo
+![Etapa 10: Cámara inclinada verticalmente hacia las torres y vitral del castillo]({{ '/assets/images/proceso/etapa10_camara_vertical_castillo.png' | relative_url }})
+*Implementación del control de elevación vertical de cámara (teclas R/F y arrastre con ratón o dedo táctil), permitiendo al jugador alzar la vista hacia el cielo para contemplar el vitral de la Princesa Peach, la torre principal y las banderas ondeantes.*

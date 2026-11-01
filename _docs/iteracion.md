@@ -378,3 +378,7 @@ Las siguientes capturas reales tomadas directamente del motor durante las sesion
 ### Etapa L — Vitral Oficial de la Primera Dama Gabriela de Bukele en el Castillo
 ![Etapa 13: Vitral oficial de Gabriela de Bukele en la fachada del castillo]({{ '/assets/images/proceso/etapa13_vitral_gabriela_castillo.png' | relative_url }})
 *Integración definitiva del retrato oficial de la Primera Dama Gabriela de Bukele provisto en assets4, ajustado al marco ovalado del castillo con bisel dorado, bandera de El Salvador y transparencia superior adaptada a la arquitectura tridimensional.*
+
+### Etapa M — Locomoción Orgánica de Bukele con Articulación de Tobillos
+![Etapa 14: Ciclo de carrera orgánico de Bukele con zapatillas niveladas]({{ '/assets/images/proceso/etapa14_caminata_organica_bukele.png' | relative_url }})
+*Refinamiento anatómico de la marcha: introducción de los huesos `FootL` y `FootR` en la jerarquía FK, nivelación de zapatillas con el plano del suelo, flexión suave de rodilla en el avance e inclinación corporal atlética hacia adelante.*

@@ -408,3 +408,23 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
   - **Banda Sonora Oficial OST (`assets/audio/sm64/`)**:
     - Se integró `01 Super Mario 64 Soundtrack - Its-a-Me, Mario.mp3` como saludo de voz al iniciar el juego.
     - Se actualizaron `title_screen_bgm.mp3` (Pista `02`, 3:34 min) y `file_select_bgm.mp3` (Pista `03`, 46 s) con las pistas maestras de alta fidelidad.
+
+---
+
+## 📌 Prompt 24: Refinamiento Orgánico del Ciclo de Caminata y Carrera de Bukele (FK con Tobillos Articulados)
+
+### Texto del Prompt enviado a la IA:
+> *"pudiéramos hacer algo con la forma en como bukele camina, se ve raro, ayúdame con ese detalle por favor [adjuntando captura de Bukele en zancada con pierna delantera rígida a 45° y zapatillas hacia arriba]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Corregir la cinemática de locomoción del personaje de Nayib Bukele, eliminando el aspecto "antinatural y acartonado" donde la pierna delantera se proyectaba recta como una vara rígida y el pie apuntaba hacia el cielo.
+  2. Dotar a la marcha de un aspecto fluido, profesional y verosímil propio de juegos en tercera persona (tipo *Fortnite* o *Super Mario 64*).
+* **Diagnóstico y Solución Técnica**:
+  - **Jerarquía FK con Articulación de Tobillos (`scripts/build_bukele_hero.py`)**:
+    - Las zapatillas 3D estaban fusionadas rígidamente al nodo `Shin` (pantorrilla), provocando que al rotar el muslo, toda la pierna quedara en un ángulo fijo de 45° con la punta hacia arriba como un esquí.
+    - Se remodeló la jerarquía añadiendo los huesos hijos `FootL` y `FootR` articulados en el tobillo `(0.04, 0, -0.38)`.
+  - **Cinemática de Locomoción Fluida (`js/game.js: animateLimbs`)**:
+    - **Nivelación Dinámica de Zapatillas**: Se programó la rotación inversa en `FootL/R` (`-legRot * 0.65`), manteniendo las suelas paralelas al suelo al pisar y extendiéndose naturalmente en el despegue posterior.
+    - **Amortiguación de Rodilla**: Se redujo la hiperextensión de la zancada (`swing * 0.48`) y se añadió flexión suave tanto al avanzar (`sin(walkCycle) * 0.22`) como al recoger la pierna hacia atrás.
+    - **Inclinación Atlética y Cadencia**: Se corrigió el signo del torso para que se incline hacia adelante en el avance (`rotation.z = -0.10`), se redujo la velocidad del ciclo a un trote armónico (`delta * 9.5`) y se suavizó el rebote vertical a un pulso por paso (`Math.abs(Math.sin(walkCycle)) * 0.045`).

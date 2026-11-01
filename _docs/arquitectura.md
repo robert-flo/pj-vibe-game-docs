@@ -104,3 +104,15 @@ La arquitectura comenzó con 3 estados básicos en las primeras iteraciones y cr
 | `scripts/export_castle_actors.py` | Exporta los actores independientes `castle_door.glb` (emblema estelar simétrico) y `wooden_signpost.glb`. |
 | `scripts/render_sm64_audio.py` | Decodifica secuencias `.m64` junto con bancos JSON y muestras PCM `.aiff`, aplicando articulación `noteDuration` para generar los MP3 del juego. |
 | `scripts/shot.sh` | Automatiza capturas de verificación en Chromium headless con aceleración WebGL SwiftShader (`?scene=6&pos=...&cam=...`). |
+
+---
+
+## 🌐 Repositorios Externos y Fuentes de Texturas Utilizadas
+
+Para garantizar la fidelidad visual y geométrica con el clásico de Nintendo 64 y elevar la calidad gráfica a estándares modernos, se integraron los siguientes repositorios abiertos de la comunidad:
+
+| Repositorio / Fuente | Proyecto / Organización | URL Oficial de GitHub | Rol en el Videojuego |
+| :--- | :--- | :--- | :--- |
+| **RENDER96-HD-TEXTURE-PACK** | pokeheadroom / Render96 Team | [`github.com/pokeheadroom/RENDER96-HD-TEXTURE-PACK`](https://github.com/pokeheadroom/RENDER96-HD-TEXTURE-PACK) | Paquete maestro de texturas remasterizadas en alta definición: muros de mampostería, tejas de las torres, senderos, césped HD, follaje de árboles en billboard y agua de cascada. |
+| **Render96ex** | Render96 Team | [`github.com/Render96/Render96ex`](https://github.com/Render96/Render96ex) | Descompilación en C de *Super Mario 64*: listas de despliegue RSP (`levels/castle_grounds/areas/1/`), arreglos de vértices Fast3D, normales de luz direccional y datos de secuencias. |
+| **Activos Presidenciales y Personalización** | Local (`Desktop/assets2-5`) | Directorio del proyecto | Renders de Nayib Bukele (`assets2`), retrato oficial de Gabriela de Bukele (`assets4/images.jpeg`), pistas maestras OST N64 (`assets4`) y favicon oficial (`assets5/favicon.png`). |

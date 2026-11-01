@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #111827;
+    line-height: 1.48;
+    margin: 0;
+    padding: 0;
+    font-size: 12.5px;
+  }
+  .page {
+    page-break-after: always;
+    box-sizing: border-box;
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    padding: 20mm 24mm;
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+  }
+  /* PORTADA */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 30mm 25mm 25mm;
+  }
+  .cover-logo {
+    width: 220px;
+    margin-bottom: 12px;
+  }
+  .cover-slogan {
+    font-size: 13px;
+    font-style: italic;
+    color: #4b5563;
+    margin-bottom: 24px;
+  }
+  .cover-badge {
+    background: #f0f7ff;
+    border: 1px solid #bae6fd;
+    color: #0369a1;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    padding: 8px 24px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .cover-divider {
+    width: 100%;
+    height: 2px;
+    background: #0f172a;
+    margin-bottom: 40px;
+  }
+  .cover-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #1e3a8a;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .cover-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.35;
+    margin: 0 0 35px;
+    text-transform: uppercase;
+  }
+  .cover-section-line {
+    width: 90px;
+    height: 1px;
+    background: #cbd5e1;
+    margin: 0 auto 30px;
+  }
+  .cover-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0 0 30px;
+  }
+  .cover-date {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #334155;
+    text-transform: uppercase;
+  }
+
+  /* INTERIOR */
+  h1 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 5px;
+  }
+  h2 {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 12px 0 6px;
+  }
+  h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 8px 0 3px;
+  }
+  p {
+    margin: 0 0 8px;
+    text-align: justify;
+  }
+  ul {
+    margin: 0 0 10px 18px;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 3px;
+  }
+  a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 11px;
+    background: #f1f5f9;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: #0f172a;
+  }
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    padding: 8px 12px;
+    margin: 10px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 11.5px;
+  }
+  .case-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #1e3a8a;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 11.5px;
+  }
+  .case-box strong {
+    color: #1e3a8a;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 10px;
+    font-size: 10.5px;
+  }
+  th, td {
+    border: 1px solid #e2e8f0;
+    padding: 5px 7px;
+    text-align: left;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 9px;
+  }
+  .badge-success { background: #dcfce7; color: #166534; }
+  .badge-info { background: #e0f2fe; color: #075985; }
+  .grid-2 {
+    display: flex;
+    gap: 10px;
+    margin: 6px 0;
+  }
+  .grid-2 > div {
+    flex: 1;
+  }
+  .img-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 4px;
+    background: #f8fafc;
+    text-align: center;
+  }
+  .img-card img {
+    width: 100%;
+    height: 44mm;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+  }
+  .img-card span {
+    display: block;
+    font-size: 9.5px;
+    line-height: 1.3;
+    color: #475569;
+    margin-top: 4px;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 12mm;
+    left: 24mm;
+    right: 24mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9.5px;
+    color: #94a3b8;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1: PORTADA -->
+<div class="page cover">
+  <div>
+    <img src="/home/omarchy/Downloads/logo.png" class="cover-logo" alt="Kodigo">
+    <div class="cover-slogan">Formamos talento tech en El Salvador y Latinoamérica</div>
+    <div class="cover-badge">AI FOR DEVS JR. 5</div>
+    <div class="cover-divider"></div>
+  </div>
+
+  <div>
+    <div class="cover-label">ACTIVIDAD SEMANA 2:</div>
+    <h1 class="cover-title">VIBECODING GUIADO:<br>DESARROLLO DE UN MINI-JUEGO 3D EN THREE.JS<br>COMO HOMENAJE A SUPER MARIO 64</h1>
+    <div class="cover-section-line"></div>
+
+    <div class="cover-label">INSTRUCTOR:</div>
+    <div class="cover-name">ING. RONALD MEJIA</div>
+    <div class="cover-section-line"></div>
+
+    <div class="cover-label">ESTUDIANTE:</div>
+    <div class="cover-name">ROBERTO CARLOS FLORES QUINTANILLA</div>
+  </div>
+
+  <div class="cover-date">
+    1 DE NOVIEMBRE DE 2026
+  </div>
+</div>
+
+<!-- PÁGINA 2: RESUMEN EJECUTIVO Y MAPA DEL PROYECTO -->
+<div class="page">
+  <h1>1. Resumen Ejecutivo y Enlaces del Proyecto</h1>
+  
+  <p>El presente informe documenta el desarrollo completo de <strong>Super Bukele 64</strong>, un mini-juego tridimensional en WebGL ejecutado directamente en el navegador web que homenajea de forma integral la secuencia canónica y el nivel exterior de Peach's Castle Grounds de <em>Super Mario 64</em>. El proyecto fue realizado aplicando rigurosamente los principios de <strong>Vibecoding Guiado</strong>: el estudiante asume el rol de arquitecto y director técnico, guiando a la Inteligencia Artificial a través de requerimientos atómicos, análisis de capturas del motor y control de versiones granular.</p>
+
+  <div class="highlight-box">
+    <strong>🔗 Enlaces Oficiales de Entrega y Despliegue en Vivo:</strong><br>
+    • <strong>Juego 3D en Vivo (GitHub Pages):</strong> <a href="https://robert-flo.github.io/pj-vibe-game/">https://robert-flo.github.io/pj-vibe-game/</a><br>
+    • <strong>Sitio de Documentación Académica (Jekyll Docs):</strong> <a href="https://robert-flo.github.io/pj-vibe-game-docs/">https://robert-flo.github.io/pj-vibe-game-docs/</a><br>
+    • <strong>Repositorio del Motor del Juego:</strong> <a href="https://github.com/robert-flo/pj-vibe-game">https://github.com/robert-flo/pj-vibe-game</a><br>
+    • <strong>Repositorio de Documentación Histórica:</strong> <a href="https://github.com/robert-flo/pj-vibe-game-docs">https://github.com/robert-flo/pj-vibe-game-docs</a>
+  </div>
+
+  <h2>Alcance Técnico Implementado (Flujo de 6 Escenas + Cierre de Victoria)</h2>
+  <ul>
+    <li><strong>Escena 1 (Title Screen):</strong> Logotipo 3D biselado en bloques facetados con textura de madera generado en Blender mediante la tipografía oficial <code>TypefaceMario64.otf</code> sobre mosaico azul acolchado N64.</li>
+    <li><strong>Escena 2 (3D Bukele Head Screen):</strong> Busto 3D fotorrealista interactivo de Nayib Bukele con seguimiento elástico del cursor de ratón/toque y esquema de iluminación cálida de estudio fotográfico.</li>
+    <li><strong>Escena 3 (SELECT FILE Screen):</strong> Tablero dorado de selección de partida con 4 ranuras (<code>BUKELE A, B, C, D</code>), insignias retro NEW y cursor tridimensional de mano enguantada N64.</li>
+    <li><strong>Escena 4 (La Carta de Gabriela):</strong> Pergamino real donde la Primera Dama Gabriela invita a Nayib al castillo, acompañado del arpegio musical de piano clásico extraído de la ROM.</li>
+    <li><strong>Escena 5 (Cinemática Lakitu):</strong> Vuelo aéreo calibrado milimétricamente al segundo 49.0 (22.5s) que transiciona suavemente hacia la tubería verde N64 recién emergida en los jardines.</li>
+    <li><strong>Escena 6 (Peach's Castle Grounds HD):</strong> Replicación geométrica de las listas de despliegue RSP (Fast3D) del nivel original de Nintendo 64 con texturas HD de RENDER96, 26 árboles clásicos en billboard sobre eje Y, cascada con flujo UV continuo, 4 banderas ondeantes, 4 carteles cómicos interactivos y 10 Bitcoins coleccionables.</li>
+    <li><strong>Cinemática de Victoria (Puertas Reales):</strong> Al cruzar el puente y alcanzar el pórtico (Z ≈ -29.5), las dos puertas estelares se abren hacia el exterior con su sonido clásico, Bukele entra sobre la alfombra roja, suena "Here we go!" + <code>star_fanfare.mp3</code> y se despliega el modal final con conteo de Bitcoins y tiempo (MM:SS).</li>
+  </ul>
+
+  <h2>Ficha Técnica de Herramientas</h2>
+  <ul>
+    <li><strong>Motor Gráfico:</strong> Three.js (WebGL ES Modules) sin bundlers opacos para máxima legibilidad.</li>
+    <li><strong>Modelado y Scripts Offline:</strong> Blender 5.2.2 LTS con scripts Python para mallas GLB y optimización UV.</li>
+    <li><strong>Audio Auténtico:</strong> Extracción de secuencias <code>.m64</code> y muestras PCM <code>.aiff</code> desde la ROM US de SM64, sintetizadas con NumPy según <code>seqplayer.c</code> + sintetizador Web Audio API de respaldo.</li>
+    <li><strong>Compatibilidad Multiplataforma:</strong> Controles de teclado WASD/Flechas/Espacio + D-Pad táctil virtual y botón A para móviles/tablets.</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>AI FOR DEVS JR. 5 — SEMANA 2: VIBECODING GUIADO</span>
+    <span>Página 2 de 6</span>
+  </div>
+</div>
+
+<!-- PÁGINA 3: PROCESO DE CO-CREACIÓN Y TABLA DE ITERACIONES -->
+<div class="page">
+  <h1>2. Proceso de Co-Creación: Dirección Humana y Vibecoding</h1>
+  
+  <p>Una de las premisas centrales evaluadas en esta actividad es que el desarrollo <strong>no fue un "one-shot" automático</strong>, sino un diálogo constructivo y metódico a lo largo de <strong>20 prompts y 19 iteraciones registradas</strong>. El rol del estudiante consistió en formular objetivos precisos, auditar cada entrega mediante capturas de pantalla desde el motor WebGL e instruir refactorizaciones ante cualquier incoherencia estética o física.</p>
+
+  <h2>Resumen de Commits y Entregas Granulares en Git</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 14%;">Commit</th>
+        <th style="width: 20%;">Módulo / Eje</th>
+        <th>Descripción Técnica de la Entrega</th>
+        <th style="width: 12%;">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>510da5d</code></td>
+        <td>Cinemática</td>
+        <td>Calibración de Lakitu a 720p 60fps cortando en el segundo 49.0 sobre la tubería verde.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+      <tr>
+        <td><code>a404f41</code></td>
+        <td>Geometría 3D</td>
+        <td>Extracción RSP de Peach's Castle Grounds con texturas HD de RENDER96.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+      <tr>
+        <td><code>1b30aa5</code></td>
+        <td>Personaje</td>
+        <td>Héroe Nayib Bukele (assets2): traje formal azul marino, camiseta negra y cabeza real.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+      <tr>
+        <td><code>8ff1418</code></td>
+        <td>Arquitectura</td>
+        <td>Incorporación de torre central alta con asta (areas/1/3), puertas estelares y carteles.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+      <tr>
+        <td><code>49cebe7</code></td>
+        <td>Audio ROM</td>
+        <td>Síntesis de secuencias .m64 y samples .aiff: BGM jardines, fanfarria, monedas y voces.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+      <tr>
+        <td><code>c94220d</code></td>
+        <td>Gameplay</td>
+        <td>Integración de 26 árboles HD, cascada UV, 4 banderas, 10 Bitcoins y cierre de victoria.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+      <tr>
+        <td><code>9c474c7</code></td>
+        <td>Herramientas</td>
+        <td>Habilitación de SwiftShader WebGL en Chromium headless para capturas en ~6s.</td>
+        <td><span class="badge badge-info">Optimizado</span></td>
+      </tr>
+      <tr>
+        <td><code>16b5e97</code></td>
+        <td>Físicas</td>
+        <td>Transformación de normales de raycast a espacio de mundo (matrixWorld) y guardia de carga.</td>
+        <td><span class="badge badge-success">Corregido</span></td>
+      </tr>
+      <tr>
+        <td><code>215f5be</code></td>
+        <td>Shaders GLSL</td>
+        <td>Recorte por fragment shader (onBeforeCompile) en cuello de Bukele sobre saco formal.</td>
+        <td><span class="badge badge-success">Corregido</span></td>
+      </tr>
+      <tr>
+        <td><code>5792fa4</code></td>
+        <td>Animación</td>
+        <td>Temporización de apertura de puertas independiente de FPS con Date.now().</td>
+        <td><span class="badge badge-success">Corregido</span></td>
+      </tr>
+      <tr>
+        <td><code>0830d97</code></td>
+        <td>Rendimiento</td>
+        <td>Optimización de texturas de bukele_head a 2K, reduciendo el archivo en 60% (4.8 MB).</td>
+        <td><span class="badge badge-info">Optimizado</span></td>
+      </tr>
+      <tr>
+        <td><code>3386912</code></td>
+        <td>Hero & Motor</td>
+        <td>Bukele estilo Fortnite (7.5 cabezas), audio en menús 1-3, cascada descendente y cámara vertical R-F.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+      <tr>
+        <td><code>53b30b8</code></td>
+        <td>Vitral 3D</td>
+        <td>Reparación de UVs en vitral exterior de Peach (relación 64x32) y sistema de vitral personalizable.</td>
+        <td><span class="badge badge-success">Aprobado</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Metodología de Verificación Visual Automatizada</h2>
+  <p>Para evitar el sesgo del "código que compila pero falla al jugar", se desarrolló un arnés automatizado en Bash y Chromium (<code>scripts/shot.sh</code>) que permite renderizar instantáneas del motor WebGL bajo parámetros controlados (<code>?scene=6&pos=...&cam=...</code>). Cada uno de los 14 bugs encontrados durante el proceso fue evidenciado mediante capturas reales antes y después de su corrección.</p>
+
+  <div class="page-footer">
+    <span>AI FOR DEVS JR. 5 — SEMANA 2: VIBECODING GUIADO</span>
+    <span>Página 3 de 6</span>
+  </div>
+</div>
+
+<!-- PÁGINA 4: GALERÍA VISUAL DE EVOLUCIÓN TÉCNICA -->
+<div class="page">
+  <h1>3. Galería Visual de Evolución Técnica</h1>
+  
+  <p>La siguiente comparativa visual ilustra la progresión del proyecto desde las primeras etapas prototipo hasta el acabado final, capturada directamente desde el motor WebGL:</p>
+
+  <div class="grid-2">
+    <div class="img-card">
+      <img src="/home/omarchy/Projects/pj-vibe-game-docs/assets/images/proceso/etapa2_bug_arcoiris_sombras.png">
+      <span><strong>Fallo de Normales y Sombras:</strong> Terreno arcoíris por normales firmadas (int8) como RGB y sombras negras sólidas.</span>
+    </div>
+    <div class="img-card">
+      <img src="/home/omarchy/Projects/pj-vibe-game-docs/assets/images/proceso/etapa4_castillo_completo_hd.png">
+      <span><strong>Castillo de Peach Completo HD:</strong> Iluminación RSP calculada, torre central alta, 4 banderas y 26 árboles clásicos en billboard.</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="img-card">
+      <img src="/home/omarchy/Projects/pj-vibe-game-docs/assets/images/proceso/etapa9_bukele_fortnite_style.png">
+      <span><strong>Bukele Estilo Fortnite:</strong> Canon de 7.5 cabezas, V-taper, zapatillas 3D, reloj de oro y flexión articular de rodillas y codos.</span>
+    </div>
+    <div class="img-card">
+      <img src="/home/omarchy/Projects/pj-vibe-game-docs/assets/images/proceso/etapa11_vitral_peach_reparado.png">
+      <span><strong>Vitral de Peach Corregido:</strong> Coordenadas UV 64x32 corregidas sin cortes ni duplicaciones, con soporte personalizable (?glass=).</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="img-card">
+      <img src="/home/omarchy/Projects/pj-vibe-game-docs/assets/images/proceso/etapa6_puertas_abiertas.png">
+      <span><strong>Cinemática de Puertas Estelares:</strong> Hojas de madera abriéndose hacia el exterior con alfombra roja y sonido N64.</span>
+    </div>
+    <div class="img-card">
+      <img src="/home/omarchy/Projects/pj-vibe-game-docs/assets/images/proceso/etapa7_modal_victoria.png">
+      <span><strong>Pantalla Final de Victoria:</strong> Resumen de Bitcoins y tiempo cronometrado con fanfarria clásica star_fanfare.mp3.</span>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>AI FOR DEVS JR. 5 — SEMANA 2: VIBECODING GUIADO</span>
+    <span>Página 4 de 6</span>
+  </div>
+</div>
+
+<!-- PÁGINA 5: CASOS DE ESTUDIO: DEPURACIÓN DE BUGS CRÍTICOS -->
+<div class="page">
+  <h1>4. Casos de Estudio: Depuración de Bugs Críticos</h1>
+  
+  <p>Durante las iteraciones de desarrollo, el vibecoding guiado demostró su eficacia al resolver 15 incidencias complejas que requerían diagnóstico interdisciplinario. A continuación se presentan los casos de estudio más representativos:</p>
+
+  <div class="case-box">
+    <strong>Caso 1: Normales de Colisión en Espacio Local de Malla</strong><br>
+    <strong>Problema:</strong> Al caminar sobre el puente, el personaje caía al vacío a pesar de que el raycast registraba intersecciones.<br>
+    <strong>Diagnóstico:</strong> Three.js devuelve <code>hit.face.normal</code> en coordenadas locales. Al escalar el nivel, no coincidía con el eje mundial Y.<br>
+    <strong>Solución:</strong> Se aplicó <code>hit.face.normal.clone().transformDirection(hit.object.matrixWorld)</code> para calcular la pendiente real frente a <code>cos(slope) > 0.7</code>.
+  </div>
+
+  <div class="case-box">
+    <strong>Caso 2: Rediseño Anatómico Estilo Fortnite y Rigging Articulado</strong><br>
+    <strong>Problema:</strong> El modelo inicial lucía desproporcionado (cabezón de 4 cabezas), torso plano en vista lateral y movimiento rígido de péndulo.<br>
+    <strong>Diagnóstico:</strong> Escala fija de 0.9 en cabeza y extremidades de un solo tramo sin jerarquía de rodillas o codos.<br>
+    <strong>Solución:</strong> Escala de cabeza ajustada a proporción humana de 7.5 cabezas (0.52), torso atlético con profundidad pectoral de 0.32m en V-taper, y jerarquía FK con flexión de rodilla en carrera (<code>ShinL/R</code>) y braceo de corredores (<code>ForearmL/R</code>).
+  </div>
+
+  <div class="case-box">
+    <strong>Caso 3: Audio Auténtico en Menús, Cascada Descendente y Cámara Vertical</strong><br>
+    <strong>Problema:</strong> Menús silenciosos en Escenas 1-3, cascada invertida subiendo hacia la montaña y cámara sin elevación vertical.<br>
+    <strong>Diagnóstico:</strong> Falta de secuencias sintetizadas para Title/File Select, signo negativo en offset UV y ausencia de pitch.<br>
+    <strong>Solución:</strong> Síntesis de <code>02_menu_title_screen.m64</code> y <code>21_menu_file_select.m64</code> con instrumentos N64, inversión a <code>waterfallTex.offset.y += delta * 1.35</code> y variable <code>cameraPitch</code> [ -0.35, 0.72 ] rad con teclas R-F y arrastre.
+  </div>
+
+  <div class="highlight-box">
+    <strong>Auditoría de Incidencias Totales:</strong> Se diagnosticaron y solventaron satisfactoriamente 15 bugs documentados en el portal: colisiones en espacio local, shaders GLSL de recorte, audio N64 auténtico, proporciones estilo Fortnite, controles móviles sin bloqueos, flujo de cascada y mapeo UV del vitral de Peach.
+  </div>
+
+  <div class="page-footer">
+    <span>AI FOR DEVS JR. 5 — SEMANA 2: VIBECODING GUIADO</span>
+    <span>Página 5 de 6</span>
+  </div>
+</div>
+
+<!-- PÁGINA 6: ANÁLISIS CRÍTICO, RÚBRICA Y CONCLUSIÓN -->
+<div class="page">
+  <h1>5. Análisis Crítico, Respuestas a la Rúbrica y Conclusión</h1>
+
+  <h2>Respuestas a los Cuestionamientos de la Rúbrica</h2>
+  <h3>a. ¿Qué aprendí usando la Inteligencia Artificial para programar?</h3>
+  <p>Aprendí que el valor primordial de la IA generativa no reside en generar código ciegamente, sino en actuar como un acelerador de prototipado que exige del desarrollador un rol de <strong>arquitecto y evaluador riguroso</strong>. La capacidad de formular preguntas precisas, descomponer requerimientos en subtareas atómicas y diagnosticar discrepancias visuales o matemáticas es el verdadero núcleo de la ingeniería de software con IA.</p>
+
+  <h3>b. ¿Qué ventajas y límites identifiqué del Vibecoding?</h3>
+  <ul>
+    <li><strong>Ventajas:</strong> Reducción drástica del tiempo de implementación en tareas interdisciplinarias (WebGL, Blender Python, FFmpeg, síntesis PCM); facilidad para probar ideas creativas sin fricción de configuración; estructuración inmediata de patrones modulares limpios.</li>
+    <li><strong>Límites:</strong> El peligro del código que "compila sin errores pero falla en pantalla" (como las normales invertidas o colisiones en espacio local); la IA carece de percepción estética o sentido de ritmo jugable (game feel), requiriendo obligatoriamente supervisión humana constante.</li>
+  </ul>
+
+  <h3>c. ¿Qué partes del código comprendo plenamente y cuáles necesito reforzar?</h3>
+  <ul>
+    <li><strong>Comprendidas plenamente:</strong> La máquina de 8 estados acoplada al ciclo de vida WebGL/DOM; la física de Euler con raycasting espacial y colisiones por deslizamiento; la arquitectura de Web Audio API y el bucle de animación a 60 FPS con delta acotado.</li>
+    <li><strong>A reforzar conceptualmente:</strong> Desarrollo avanzado de shaders GLSL personalizados en Three.js y compresión binaria de mallas mediante Draco/KTX2 para optimizaciones de red extremas.</li>
+  </ul>
+
+  <h2>Beneficios y Riesgos Identificados</h2>
+  <div class="highlight-box">
+    <strong>Beneficios:</strong> Lo que a mano habría tomado varias semanas de modelado 3D, ingeniería inversa de formatos N64 y desarrollo de físicas se completó en sesiones ágiles y documentadas.<br>
+    <strong>Riesgos Mitigados:</strong> Se evitó el acoplamiento incontrolado mediante una regla de oro: <em>cada cambio, por pequeño que fuera, se verificó visualmente, se probó en consola y se registró en un commit atómico independiente</em>.
+  </div>
+
+  <h2>Conclusión</h2>
+  <p>La experiencia demuestra que el <strong>Vibecoding Guiado</strong> es una metodología potente y madura cuando se acompaña de rigor técnico, control de versiones disciplinado y validación empírica. <em>Super Bukele 64</em> no solo cumple con cada estándar estético y jugable fijado al inicio, sino que constituye una prueba irrefutable de que la colaboración humano-IA permite alcanzar productos de alta craftmanship técnico en tiempos récord.</p>
+
+  <div class="page-footer">
+    <span>AI FOR DEVS JR. 5 — SEMANA 2: VIBECODING GUIADO</span>
+    <span>Página 6 de 6</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -366,3 +366,11 @@ Las siguientes capturas reales tomadas directamente del motor durante las sesion
 ### Etapa I — Inclinación Vertical de Cámara (*Pitch*) para Admirar el Castillo
 ![Etapa 10: Cámara inclinada verticalmente hacia las torres y vitral del castillo]({{ '/assets/images/proceso/etapa10_camara_vertical_castillo.png' | relative_url }})
 *Implementación del control de elevación vertical de cámara (teclas R/F y arrastre con ratón o dedo táctil), permitiendo al jugador alzar la vista hacia el cielo para contemplar el vitral de la Princesa Peach, la torre principal y las banderas ondeantes.*
+
+### Etapa J — Vitral de la Princesa Peach Corregido y Continuo
+![Etapa 11: Vitral de la Princesa Peach con mapeo UV corregido]({{ '/assets/images/proceso/etapa11_vitral_peach_reparado.png' | relative_url }})
+*Tras corregir la relación de aspecto de la textura `1.rgba16.png` en `scripts/export_castle_grounds.py` y regenerar `castle_grounds.glb`, la figura de la Princesa Peach queda unificada, sin cortes ni duplicaciones laterales.*
+
+### Etapa K — Sistema de Vitral Dinámico Personalizable
+![Etapa 12: Vitral personalizado con imagen externa de Nayib Bukele]({{ '/assets/images/proceso/etapa12_vitral_personalizable.png' | relative_url }})
+*Demostración de la personalización dinámica del vitral del castillo (`?glass=...` / `window.setCastleStainedGlass`), permitiendo al usuario sustituir la imagen por cualquier foto, ilustración u obra de su elección integrada en el marco 3D.*

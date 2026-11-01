@@ -125,3 +125,10 @@ Para validar que cada iteración funcionara de verdad (y no solo compilara sin e
 * **Síntoma**: Solo se podía rotar la cámara en el plano horizontal (Q/E), impidiendo alzar la vista para ver el vitral de Peach, las torres y las banderas.
 * **Causa raíz**: La cámara en 3ª persona carecía de variable de elevación (*pitch*).
 * **Solución aplicada**: Implementación de `cameraPitch` acotada entre [-0.35, 0.72] radianes, controlada con teclas R/F o arrastre vertical con ratón o touch.
+
+---
+
+### Incidencia 15: Vitral de la Princesa Peach Partido y Duplicado en el Eje Horizontal
+* **Síntoma**: El vitral ovalado de Peach en la fachada principal del castillo aparecía cortado en su sección inferior, con el torso y manos de Peach divididos a la mitad y repetidos de lado a lado.
+* **Causa raíz**: En `scripts/export_castle_grounds.py`, la textura `castle_grounds_seg7_texture_07001000` (`1.rgba16.png`) estaba registrada erróneamente con dimensiones `(32, 64)` en lugar de `(64, 32)`. Al invertir el ancho y alto en el cálculo de normalización UV RSP (`(ur / 32.0) / orig_w`), la coordenada U se multiplicó por dos, duplicando la textura horizontalmente y comprimiendo el eje vertical.
+* **Solución aplicada**: Se corrigieron las dimensiones canónicas a `(64, 32)` en el diccionario `TEX_MAP`, se regeneró la geometría OBJ y se compiló de nuevo el modelo `assets/models/castle_grounds.glb` con Blender 5.2.2 LTS. El vitral de Peach quedó perfectamente continuo, ensamblado y en alta definición. Adicionalmente, se implementó en `js/game.js` un sistema dinámico de vitral personalizable mediante el parámetro `?glass=ruta/imagen.png` y la función `window.setCastleStainedGlass()`, permitiendo reemplazar la imagen del vitral por cualquier foto u obra a elección del usuario.

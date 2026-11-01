@@ -364,3 +364,24 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
   - **Animación Cinemática Orgánica (`js/game.js: animateLimbs`)**: Se programó la flexión de rodilla hacia atrás en la pierna retrasada (`Math.abs(swing) * 1.35`), braceo de corredores con codos en ángulo deportivo (35° a 60°), balanceo vertical de cadera, inclinación de avance al correr (`lean`) y ciclo de respiración viva en estado *Idle*.
   - **Audio Original en Menús (`assets/audio/sm64/`)**: Síntesis directa desde los bancos de samples oficiales de SM64 para `title_screen_bgm.mp3` y `file_select_bgm.mp3`.
   - **Cascada y Cámara Vertical (`js/game.js`)**: Signo corregido en `waterfallTex.offset.y += delta * 1.35`. Se implementó `cameraPitch` con rango [-0.35, 0.72] rad para inclinar la vista hacia el cielo y las torres del castillo.
+
+---
+
+## 📌 Prompt 22: Corrección de Coordenadas UV en el Vitral de Peach y Sistema de Vitral Personalizable
+
+### Texto del Prompt enviado a la IA:
+> *"esa imagen el el vitral esta mal, se puede corregir? quisiera saber si esa imagen igual se puede cambiar por otra a mi eleccion? [adjuntando captura del vitral de Peach partido en la mitad inferior y repetido horizontalmente]"*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Identificar y corregir el defecto visual del vitral de la Princesa Peach en la fachada del castillo, donde la imagen aparecía cortada, desalineada y duplicada horizontalmente en dos mitades.
+  2. Implementar un mecanismo para que el usuario pueda cambiar o personalizar libremente la imagen del vitral por cualquier otra de su elección.
+* **Diagnóstico y Solución Técnica**:
+  - **Diagnóstico Matemático de UVs (`scripts/export_castle_grounds.py`)**:
+    - El vitral exterior de Peach se divide en dos bloques N64: el bloque superior `07002000` (`2.rgba16.png`, 64x32 px) y el bloque inferior `07001000` (`1.rgba16.png`, 64x32 px).
+    - En el script de exportación, la entrada para `07001000` tenía invertidas las dimensiones como `(32, 64)`. Al calcular `u_norm = (ur / 32.0) / orig_w`, el denominador era 32 en lugar de 64, lo que duplicaba la escala horizontal (repitiendo la textura dos veces) y comprimía a la mitad el eje vertical.
+    - Se corrigieron las dimensiones a `(64, 32)` en `TEX_MAP`, se regeneró el OBJ y se re-exportó `assets/models/castle_grounds.glb` con Blender 5.2.2 LTS.
+  - **Sistema de Vitral Personalizable (`js/game.js`)**:
+    - Se implementó un plano de superposición calibrado con las medidas exactas del arco del vitral (`X: [-4.02, 4.02], Y: [22.01, 30.06], Z: -20.36`).
+    - Se agregó soporte para cargar cualquier imagen externa mediante el parámetro URL `?glass=ruta/o/url/imagen.png` y se expuso la función `window.setCastleStainedGlass(urlOrPath)` en tiempo de ejecución.
+    - Cuando no se proporciona una imagen personalizada, el juego muestra de forma predeterminada el vitral canónico de Peach perfectamente ensamblado y continuo.

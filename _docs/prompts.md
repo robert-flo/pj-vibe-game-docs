@@ -428,3 +428,26 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - **Nivelación Dinámica de Zapatillas**: Se programó la rotación inversa en `FootL/R` (`-legRot * 0.65`), manteniendo las suelas paralelas al suelo al pisar y extendiéndose naturalmente en el despegue posterior.
     - **Amortiguación de Rodilla**: Se redujo la hiperextensión de la zancada (`swing * 0.48`) y se añadió flexión suave tanto al avanzar (`sin(walkCycle) * 0.22`) como al recoger la pierna hacia atrás.
     - **Inclinación Atlética y Cadencia**: Se corrigió el signo del torso para que se incline hacia adelante en el avance (`rotation.z = -0.10`), se redujo la velocidad del ciclo a un trote armónico (`delta * 9.5`) y se suavizó el rebote vertical a un pulso por paso (`Math.abs(Math.sin(walkCycle)) * 0.045`).
+
+---
+
+## 📌 Prompt 25: Jerarquía Visual y Acceso Directo Destacado al Videojuego en el Documento PDF Oficial
+
+### Texto del Prompt enviado a la IA:
+> *"haz que en el documento tarea02.pdf el link al juego sea mas llamativo, porque de momento esta entre varios links, yo quiero que quien lea el documento a primera vista sepa como entrar al juego"*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Romper el camuflaje visual del enlace al juego en el entregable académico (`RobertoFlores-Tarea02.pdf`), donde anteriormente se encontraba en una viñeta simple dentro de un bloque gris junto a los repositorios de GitHub y la documentación.
+  2. Lograr que cualquier evaluador o lector, al abrir el documento PDF a primera vista, distinga inmediatamente cómo acceder y jugar la demo 3D en vivo sin requerir búsqueda minuciosa.
+* **Diagnóstico y Solución Técnica**:
+  - **Banner de Acción Inmediata en la Portada (Página 1)**:
+    - Se integró un botón/tarjeta interactiva con gradiente azul institucional (`#0284c7` a `#1e40af`), borde cian brillante y tipografía de alto impacto: `🎮 DEMO INTERACTIVA EN LÍNEA • ▶ CLIC AQUÍ PARA JUGAR: SUPER BUKELE 64`.
+    - Permite a quien abre el PDF acceder a la experiencia WebGL desde la primera página con un solo clic.
+  - **Hero Card de Acceso en la Sección 1 (Página 2)**:
+    - Se reemplazó el bloque genérico de viñetas por una tarjeta de diseño *gaming* con fondo oscuro estilizado (`#0f172a` a `#1d4ed8`), botón de acción dorado con gradiente (`#fbbf24` a `#d97706`), enlace URL en tipografía monospace cian y especificaciones de compatibilidad (100% navegador, PC/Móvil, sin emulador, audio N64).
+    - Los enlaces complementarios de auditoría (Jekyll y GitHub) se separaron en una barra técnica secundaria horizontal independiente.
+  - **Insignia de Cierre en Conclusión (Página 6)**:
+    - Se añadió un botón verde esmeralda de llamado a la acción final para garantizar acceso directo al juego tanto al iniciar como al concluir la lectura.
+  - **Validación de Maquetación A4**:
+    - Se recompiló mediante Chromium Headless verificando que el documento conserve estrictamente su formato de 6 páginas A4 sin desbordamientos de caja.

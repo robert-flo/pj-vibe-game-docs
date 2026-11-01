@@ -155,6 +155,141 @@
     border-radius: 0 6px 6px 0;
     font-size: 11.5px;
   }
+  /* LLAMADO DE ACCESO AL JUEGO */
+  .cover-game-cta {
+    margin: 20px auto 10px;
+    width: 100%;
+    max-width: 460px;
+  }
+  .cover-game-btn {
+    display: block;
+    background: linear-gradient(135deg, #0284c7 0%, #1e40af 100%);
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    text-align: center;
+  }
+  .cover-game-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #bae6fd;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .cover-game-title {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    display: block;
+  }
+  .cover-game-url {
+    font-size: 11.5px;
+    font-family: monospace;
+    font-weight: 600;
+    color: #fef08a !important;
+    display: block;
+    margin-top: 3px;
+    text-decoration: underline;
+  }
+  .cover-game-hint {
+    font-size: 9.5px;
+    color: #e0f2fe;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .game-hero-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #1d4ed8 100%);
+    border-radius: 8px;
+    padding: 9px 14px;
+    margin: 7px 0;
+    border: 2px solid #60a5fa;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+    color: #ffffff;
+  }
+  .game-hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+  }
+  .game-hero-top span.label {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #93c5fd;
+    text-transform: uppercase;
+  }
+  .game-hero-top span.pill {
+    font-size: 9px;
+    font-weight: 700;
+    background: #16a34a;
+    color: #ffffff;
+    padding: 2px 7px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+  }
+  .game-hero-body {
+    text-align: center;
+    margin: 4px 0;
+  }
+  .game-play-btn {
+    display: inline-block;
+    background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+    color: #0f172a !important;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 900;
+    padding: 7px 22px;
+    border-radius: 6px;
+    border: 2px solid #fef3c7;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    letter-spacing: 0.5px;
+  }
+  .game-hero-url {
+    margin-top: 4px;
+    display: block;
+    color: #67e8f9 !important;
+    font-weight: 700;
+    font-size: 11.5px;
+    font-family: monospace;
+    text-decoration: underline;
+  }
+  .game-hero-features {
+    display: flex;
+    justify-content: space-around;
+    font-size: 9px;
+    color: #e2e8f0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 3px;
+    margin-top: 4px;
+  }
+  .secondary-links-bar {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 3px solid #64748b;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 7px;
+    font-size: 9.8px;
+    color: #475569;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .secondary-links-bar a {
+    color: #2563eb;
+    text-decoration: underline;
+    font-weight: 600;
+  }
   .case-box {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
@@ -260,6 +395,15 @@
 
     <div class="cover-label">ESTUDIANTE:</div>
     <div class="cover-name">ROBERTO CARLOS FLORES QUINTANILLA</div>
+
+    <div class="cover-game-cta">
+      <a href="https://robert-flo.github.io/pj-vibe-game/" target="_blank" class="cover-game-btn">
+        <span class="cover-game-badge">🎮 DEMO INTERACTIVA EN LÍNEA • WEBGL</span>
+        <span class="cover-game-title">▶ CLIC AQUÍ PARA JUGAR: SUPER BUKELE 64</span>
+        <span class="cover-game-url">https://robert-flo.github.io/pj-vibe-game/</span>
+        <span class="cover-game-hint">Compatible con navegadores de escritorio y dispositivos móviles • Sin descargas</span>
+      </a>
+    </div>
   </div>
 
   <div class="cover-date">
@@ -273,12 +417,33 @@
   
   <p>El presente informe documenta el desarrollo completo de <strong>Super Bukele 64</strong>, un mini-juego tridimensional en WebGL ejecutado directamente en el navegador web que homenajea de forma integral la secuencia canónica y el nivel exterior de Peach's Castle Grounds de <em>Super Mario 64</em>. El proyecto fue realizado aplicando rigurosamente los principios de <strong>Vibecoding Guiado</strong>: el estudiante asume el rol de arquitecto y director técnico, guiando a la Inteligencia Artificial a través de requerimientos atómicos, análisis de capturas del motor y control de versiones granular.</p>
 
-  <div class="highlight-box">
-    <strong>🔗 Enlaces Oficiales de Entrega y Despliegue en Vivo:</strong><br>
-    • <strong>Juego 3D en Vivo (GitHub Pages):</strong> <a href="https://robert-flo.github.io/pj-vibe-game/">https://robert-flo.github.io/pj-vibe-game/</a><br>
-    • <strong>Sitio de Documentación Académica (Jekyll Docs):</strong> <a href="https://robert-flo.github.io/pj-vibe-game-docs/">https://robert-flo.github.io/pj-vibe-game-docs/</a><br>
-    • <strong>Repositorio del Motor del Juego:</strong> <a href="https://github.com/robert-flo/pj-vibe-game">https://github.com/robert-flo/pj-vibe-game</a><br>
-    • <strong>Repositorio de Documentación Histórica:</strong> <a href="https://github.com/robert-flo/pj-vibe-game-docs">https://github.com/robert-flo/pj-vibe-game-docs</a>
+  <!-- BANNER HERO DE ACCESO AL JUEGO -->
+  <div class="game-hero-card">
+    <div class="game-hero-top">
+      <span class="label">🎮 Acceso Inmediato al Videojuego 3D en Vivo</span>
+      <span class="pill">● 100% OPERATIVO EN EL NAVEGADOR</span>
+    </div>
+    <div class="game-hero-body">
+      <a href="https://robert-flo.github.io/pj-vibe-game/" target="_blank" class="game-play-btn">
+        🕹️ HAZ CLIC AQUÍ PARA ENTRAR A JUGAR: SUPER BUKELE 64 ➔
+      </a>
+      <a href="https://robert-flo.github.io/pj-vibe-game/" target="_blank" class="game-hero-url">
+        https://robert-flo.github.io/pj-vibe-game/
+      </a>
+    </div>
+    <div class="game-hero-features">
+      <span>✨ Sin emuladores ni descargas</span>
+      <span>🎵 Banda sonora OST original N64</span>
+      <span>📱 Teclado (WASD/Espacio) y controles táctiles</span>
+    </div>
+  </div>
+
+  <!-- BARRA DE ENLACES COMPLEMENTARIOS -->
+  <div class="secondary-links-bar">
+    <strong style="color: #1e293b;">📂 Enlaces Técnicos Complementarios:</strong>
+    <span>📖 <strong>Portal Docs:</strong> <a href="https://robert-flo.github.io/pj-vibe-game-docs/" target="_blank">robert-flo.github.io/pj-vibe-game-docs/</a></span>
+    <span>💻 <strong>Repo Juego:</strong> <a href="https://github.com/robert-flo/pj-vibe-game" target="_blank">GitHub</a></span>
+    <span>📁 <strong>Repo Docs:</strong> <a href="https://github.com/robert-flo/pj-vibe-game-docs" target="_blank">GitHub</a></span>
   </div>
 
   <h2>Alcance Técnico Implementado (Flujo de 6 Escenas + Cierre de Victoria)</h2>
@@ -535,6 +700,13 @@
 
   <h2>Conclusión</h2>
   <p>La experiencia demuestra que el <strong>Vibecoding Guiado</strong> es una metodología potente y madura cuando se acompaña de rigor técnico, control de versiones disciplinado y validación empírica. <em>Super Bukele 64</em> no solo cumple con cada estándar estético y jugable fijado al inicio, sino que constituye una prueba irrefutable de que la colaboración humano-IA permite alcanzar productos de alta craftmanship técnico en tiempos récord.</p>
+
+  <div style="margin-top: 10px; background: #f0fdf4; border: 1px solid #86efac; border-radius: 6px; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 10.5px;">
+    <span style="color: #166534; font-weight: 700;">🕹️ Experiencia final disponible públicamente en WebGL:</span>
+    <a href="https://robert-flo.github.io/pj-vibe-game/" target="_blank" style="background: #16a34a; color: #ffffff; text-decoration: none; font-weight: 800; padding: 4px 12px; border-radius: 4px; font-size: 10.5px;">
+      ▶ JUGAR AHORA: robert-flo.github.io/pj-vibe-game/
+    </a>
+  </div>
 
   <div class="page-footer">
     <span>AI FOR DEVS JR. 5 — SEMANA 2: VIBECODING GUIADO</span>

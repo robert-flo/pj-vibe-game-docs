@@ -307,6 +307,23 @@ En el desarrollo asistido por IA, la primera respuesta raramente cumple con los 
 
 ---
 
+### 19. Optimización de Peso de Carga y Soporte Táctil Completo para Dispositivos Móviles
+* **Objetivo de diseño**: Garantizar que el juego cargue velozmente en conexiones web moderadas y que sea 100% interactivo y disfrutable en teléfonos inteligentes, iPads o pantallas táctiles sin necesidad de teclado físico.
+* **Componentes implementados**:
+  1. **Reducción de Peso de Texturas en Blender (60% de optimización)**:
+     - Detección de texturas 4K redundantes en `bukele_head.glb` (4096×4096 normal map PNG y color JPEG).
+     - Procesamiento automatizado en Blender escalando los mapas a 2048×2048 (2K), reduciendo el peso del archivo de **12 MB a 4.8 MB** con carga instantánea y preservando el 100% de los detalles del rostro, barba y peinado.
+  2. **Cruceta Virtual D-Pad y Botón de Salto N64 (`#touch-controls`)**:
+     - Interfaz flotante con diseño translúcido de cristal esmerilado que se activa automáticamente al detectar pantallas táctiles (`'ontouchstart' in window || navigator.maxTouchPoints > 0`).
+     - D-Pad en esquina inferior izquierda con cruceta direccional (`KeyW`, `KeyA`, `KeyS`, `KeyD`) y botón de salto "A" cian de 72px en esquina inferior derecha.
+     - Vinculación con eventos de puntero (`pointerdown`, `pointerup`, `pointercancel`, `pointerleave`) con `touch-action: none` para impedir el scroll nativo del navegador.
+  3. **Rotación Gestual de Cámara y Avance Táctil de Escenas**:
+     - Arrastre táctil en pantalla (`touchstart` / `touchmove`) para rotar suavemente la cámara orbital 3D alrededor de Bukele durante el gameplay y orientar la cabeza interactiva en la Escena 2.
+     - Cualquier toque en pantalla avanza fluidamente a través de las escenas de Título, Selección de Archivo, Carta de Gabriela y Cinemática.
+* **Resultado**: Experiencia multiplataforma completa accesible desde cualquier navegador moderno en escritorio, tablet o smartphone.
+
+---
+
 ## 📸 Galería Histórica del Proceso Evolutivo (Antes y Después)
 
 Las siguientes capturas reales tomadas directamente del motor durante las sesiones de desarrollo documentan la evolución paso a paso desde el prototipo geométrico inicial hasta el nivel completo:
@@ -336,3 +353,7 @@ Las siguientes capturas reales tomadas directamente del motor durante las sesion
 
 ![Etapa 7: Pantalla final de victoria con estadísticas]({{ '/assets/images/proceso/etapa7_modal_victoria.png' | relative_url }})
 *Al cruzar el umbral del pórtico, ambas hojas estelares se abren sobre la alfombra roja mientras Bukele camina al interior del castillo acompañado de la fanfarria original `star_fanfare.mp3`, culminando en el resumen de Bitcoins y cronómetro.*
+
+### Etapa G — Soporte Móvil Responsivo y Controles Táctiles Virtuales
+![Etapa 8: Controles táctiles virtuales en vista móvil]({{ '/assets/images/proceso/etapa8_controles_tactiles_moviles.png' | relative_url }})
+*Cruceta D-Pad y botón de salto N64 integrados para navegación táctil sin teclado, con reencuadre dinámico de la cámara orbital y HUD responsivo.*

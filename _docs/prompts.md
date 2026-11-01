@@ -324,3 +324,22 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
       - `coin.mp3` (sonido original `.sound_general_coin` al recolectar cada Bitcoin).
       - `door_open.mp3` (sonido original de apertura de las puertas de madera del castillo `.sound_general_open_wood_door`).
       - `mario_0C.mp3` (*"Here we go!"*), `mario_yah.mp3`, `mario_hoohoo.mp3` y voces clásicas de salto.
+---
+
+## 📌 Prompt 20: Optimización de Rendimiento de Carga y Soporte Completo de Controles Táctiles Móviles
+
+### Texto del Prompt enviado a la IA:
+> *"Continúa, tenemos que terminar esto hoy. Asegura que el juego cargue rápido en la web sin perder calidad y que sea completamente jugable en dispositivos móviles o tablets si el evaluador lo prueba desde ahí."*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Optimizar el tiempo de descarga y uso de memoria WebGL en navegadores móviles reduciendo el peso de los modelos 3D más demandantes.
+  2. Implementar una capa de interfaz táctil virtual intuitiva (cruceta D-Pad y botón de salto retro) que permita jugar el 100% de la aventura en smartphones, tablets y pantallas táctiles sin teclado físico.
+* **Diagnóstico y Solución Técnica**:
+  - **Optimización de Texturas en Blender (`assets/models/bukele_head.glb`)**:
+    - Se identificó que el modelo exportaba mapas normales en PNG de 4096×4096 (4.8 MB) y mapas de color de 3.8 MB, excesivos para WebGL en dispositivos móviles.
+    - Mediante un script automatizado en Blender 5.2 LTS, se recalcularon los mapas a 2048×2048 (2K), reduciendo el archivo en más del **60% (de 12 MB a 4.8 MB)** sin ninguna pérdida perceptible en la definición de la barba, ojos, sonrisa o cabello.
+  - **Controles Táctiles y Gestos (`index.html`, `css/style.css`, `js/game.js`)**:
+    - Se incorporó `#touch-controls` con D-Pad direccional en la esquina inferior izquierda y botón de salto "A" estilo N64 en la esquina inferior derecha, mostrándose automáticamente en dispositivos con soporte táctil (`'ontouchstart' in window || navigator.maxTouchPoints > 0`).
+    - Se vincularon eventos `pointerdown`, `pointerup` y `pointercancel` para evitar atascos de pulsación y `touch-action: none` para suprimir el scroll accidental de la página.
+    - Se añadió soporte de arrastre gestual (`touchstart` y `touchmove`) para permitir orbitar la cámara 3D alrededor de Bukele con un dedo, así como rotar el rostro en la Escena 2.

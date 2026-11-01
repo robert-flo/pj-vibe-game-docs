@@ -385,3 +385,26 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - Se implementó un plano de superposición calibrado con las medidas exactas del arco del vitral (`X: [-4.02, 4.02], Y: [22.01, 30.06], Z: -20.36`).
     - Se agregó soporte para cargar cualquier imagen externa mediante el parámetro URL `?glass=ruta/o/url/imagen.png` y se expuso la función `window.setCastleStainedGlass(urlOrPath)` en tiempo de ejecución.
     - Cuando no se proporciona una imagen personalizada, el juego muestra de forma predeterminada el vitral canónico de Peach perfectamente ensamblado y continuo.
+
+---
+
+## 📌 Prompt 23: Desbloqueo de Pantalla Select File, Vitral de Gabriela de Bukele y Banda Sonora OST
+
+### Texto del Prompt enviado a la IA:
+> *"1. hay un bug en el juego, la pantalla de seleccion del archivo ya no se muestra. 2. cambia la imagen en el vitral del castillo por la que esta en ~/Desktop/assets4. 3. cambia las pistas de musica de las primeras escenas por las que estan en ~/Desktop/assets4 ahi estan numeradas adecuadamente /plan"*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Investigar y corregir el bug por el cual la pantalla de selección de archivo (Escena 3 - *SELECT FILE*) no se mostraba al jugador y se saltaba directamente a la carta de Gabriela.
+  2. Sustituir la imagen del vitral exterior del castillo por el retrato de la Primera Dama Gabriela de Bukele provisto en `~/Desktop/assets4` (`images.jpeg`).
+  3. Reemplazar las pistas de música de las primeras pantallas utilizando las pistas oficiales OST numeradas en `~/Desktop/assets4`: `01` voz de Mario, `02` Title Theme y `03` File Select.
+* **Diagnóstico y Solución Técnica**:
+  - **Debounce Guard en Escena 3 (`js/game.js`)**:
+    - Se identificó que al pulsar "PRESS START" en la Escena 2, el listener `pointerdown` cambiaba el estado a `SCENE_3_FILESELECT`, pero el subsecuente evento `mousedown` o `click` emitido en el mismo ciclo era capturado por el manejador global de ventana, saltándose la Escena 3 en 0 milisegundos.
+    - Se implementó `scene3EnterTime = performance.now()` con un umbral de protección de 450 ms en `goToSceneLetter()` y se limpiaron los listeners redundantes de `btnScene2Start`. La pantalla dorada SELECT FILE ahora permanece activa y responde de forma interactiva al cursor de mano 3D.
+  - **Composición del Vitral de Gabriela de Bukele (`scripts/composite_gabriela_vitral.py`, `assets/textures/castle_grounds/stained_glass_gabriela.png`)**:
+    - Se compuso la fotografía de Gabriela de Bukele con la bandera nacional dentro del marco ovalado con bisel de plomo dorado original del castillo.
+    - Se aplicó una máscara de transparencia en el arco exterior (`alphaTest: 0.15`) para acoplar la imagen a la mampostería 3D del castillo sin esquinas negras ni solapamientos.
+  - **Banda Sonora Oficial OST (`assets/audio/sm64/`)**:
+    - Se integró `01 Super Mario 64 Soundtrack - Its-a-Me, Mario.mp3` como saludo de voz al iniciar el juego.
+    - Se actualizaron `title_screen_bgm.mp3` (Pista `02`, 3:34 min) y `file_select_bgm.mp3` (Pista `03`, 46 s) con las pistas maestras de alta fidelidad.

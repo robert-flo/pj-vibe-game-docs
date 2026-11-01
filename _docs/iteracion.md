@@ -374,3 +374,7 @@ Las siguientes capturas reales tomadas directamente del motor durante las sesion
 ### Etapa K — Sistema de Vitral Dinámico Personalizable
 ![Etapa 12: Vitral personalizado con imagen externa de Nayib Bukele]({{ '/assets/images/proceso/etapa12_vitral_personalizable.png' | relative_url }})
 *Demostración de la personalización dinámica del vitral del castillo (`?glass=...` / `window.setCastleStainedGlass`), permitiendo al usuario sustituir la imagen por cualquier foto, ilustración u obra de su elección integrada en el marco 3D.*
+
+### Etapa L — Vitral Oficial de la Primera Dama Gabriela de Bukele en el Castillo
+![Etapa 13: Vitral oficial de Gabriela de Bukele en la fachada del castillo]({{ '/assets/images/proceso/etapa13_vitral_gabriela_castillo.png' | relative_url }})
+*Integración definitiva del retrato oficial de la Primera Dama Gabriela de Bukele provisto en assets4, ajustado al marco ovalado del castillo con bisel dorado, bandera de El Salvador y transparencia superior adaptada a la arquitectura tridimensional.*

@@ -451,3 +451,24 @@ Uno de los requisitos indispensables de la actividad académica es evidenciar qu
     - Se añadió un botón verde esmeralda de llamado a la acción final para garantizar acceso directo al juego tanto al iniciar como al concluir la lectura.
   - **Validación de Maquetación A4**:
     - Se recompiló mediante Chromium Headless verificando que el documento conserve estrictamente su formato de 6 páginas A4 sin desbordamientos de caja.
+
+---
+
+## 📌 Prompt 26: Formato Académico Estructurado para Fuentes Técnicas y Repositorios en el Documento Oficial
+
+### Texto del Prompt enviado a la IA:
+> *"la parte de los enlaces tecnicos complementarios hazlo diferente, a como estaba antes. el link ara jugar esta bien, pero los demas enlaces deben ser mas academicos en su formato"*
+
+### Explicación y Justificación:
+* **Qué se pidió**:
+  1. Conservar intacto y destacado el botón principal de acceso al juego (Hero Card), el cual cumple el objetivo de ser llamativo y accesible a primera vista.
+  2. Modificar el bloque de enlaces técnicos complementarios, eliminando emoticonos o formatos informales y estructurándolos bajo un formato rigurosamente académico para la entrega universitaria.
+* **Diagnóstico y Solución Técnica**:
+  - **Tabla 1.1: Ficha de Repositorios y Fuentes Técnicas de Auditoría**:
+    - Se diseñó una tabla académica formal (`Tabla 1.1. Fuentes técnicas complementarias y repositorios para auditoría académica:`) con encabezados estandarizados: *Recurso / Entregable*, *Descripción del Contenido* y *Enlace Permanente (URI)*.
+    - Se detalló con precisión técnica el alcance de cada fuente:
+      1. **Portal de Documentación Académica (Jekyll Docs)**: Memoria técnica de 26 prompts, 24 iteraciones y catálogo de 17 incidencias resueltas.
+      2. **Código Fuente del Motor (GitHub Three.js)**: Arquitectura WebGL modular, shaders GLSL, scripts Blender y síntesis N64.
+      3. **Histórico de Documentación (GitHub Markdown)**: Fuentes Markdown, evidencias empíricas y código de generación del informe técnico PDF.
+  - **Ajuste Milimétrico de Espaciado**:
+    - Se calibraron los márgenes y tamaños tipográficos (`9px`, interlineado `1.35`) para que la tabla armonice con el resto del contenido y mantenga un margen limpio de seguridad sobre el pie de página, garantizando exactamente 6 páginas A4.

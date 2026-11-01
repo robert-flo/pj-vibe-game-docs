@@ -206,11 +206,11 @@
 
   .game-hero-card {
     background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #1d4ed8 100%);
-    border-radius: 8px;
-    padding: 9px 14px;
-    margin: 7px 0;
+    border-radius: 7px;
+    padding: 7px 12px;
+    margin: 5px 0 6px;
     border: 2px solid #60a5fa;
-    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+    box-shadow: 0 3px 10px rgba(30, 58, 138, 0.22);
     color: #ffffff;
   }
   .game-hero-top {
@@ -218,59 +218,59 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    padding-bottom: 4px;
-    margin-bottom: 5px;
+    padding-bottom: 3px;
+    margin-bottom: 4px;
   }
   .game-hero-top span.label {
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 800;
     letter-spacing: 1.5px;
     color: #93c5fd;
     text-transform: uppercase;
   }
   .game-hero-top span.pill {
-    font-size: 9px;
+    font-size: 8.5px;
     font-weight: 700;
     background: #16a34a;
     color: #ffffff;
-    padding: 2px 7px;
+    padding: 1px 6px;
     border-radius: 10px;
     letter-spacing: 0.5px;
   }
   .game-hero-body {
     text-align: center;
-    margin: 4px 0;
+    margin: 3px 0;
   }
   .game-play-btn {
     display: inline-block;
     background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
     color: #0f172a !important;
     text-decoration: none;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 900;
-    padding: 7px 22px;
-    border-radius: 6px;
+    padding: 6px 20px;
+    border-radius: 5px;
     border: 2px solid #fef3c7;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     letter-spacing: 0.5px;
   }
   .game-hero-url {
-    margin-top: 4px;
+    margin-top: 3px;
     display: block;
     color: #67e8f9 !important;
     font-weight: 700;
-    font-size: 11.5px;
+    font-size: 11px;
     font-family: monospace;
     text-decoration: underline;
   }
   .game-hero-features {
     display: flex;
     justify-content: space-around;
-    font-size: 9px;
+    font-size: 8.5px;
     color: #e2e8f0;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-top: 3px;
-    margin-top: 4px;
+    padding-top: 2px;
+    margin-top: 3px;
   }
   .secondary-links-bar {
     background: #f8fafc;
@@ -438,31 +438,77 @@
     </div>
   </div>
 
-  <!-- BARRA DE ENLACES COMPLEMENTARIOS -->
-  <div class="secondary-links-bar">
-    <strong style="color: #1e293b;">📂 Enlaces Técnicos Complementarios:</strong>
-    <span>📖 <strong>Portal Docs:</strong> <a href="https://robert-flo.github.io/pj-vibe-game-docs/" target="_blank">robert-flo.github.io/pj-vibe-game-docs/</a></span>
-    <span>💻 <strong>Repo Juego:</strong> <a href="https://github.com/robert-flo/pj-vibe-game" target="_blank">GitHub</a></span>
-    <span>📁 <strong>Repo Docs:</strong> <a href="https://github.com/robert-flo/pj-vibe-game-docs" target="_blank">GitHub</a></span>
+  <!-- TABLA ACADÉMICA DE FUENTES Y REPOSITORIOS COMPLEMENTARIOS -->
+  <div style="margin: 5px 0 7px;">
+    <div style="font-size: 10px; font-weight: 700; color: #1e293b; margin-bottom: 3px;">
+      <strong>Tabla 1.1.</strong> Fuentes técnicas complementarias y repositorios para auditoría académica:
+    </div>
+    <table style="width: 100%; border-collapse: collapse; font-size: 9px; line-height: 1.35; margin: 0;">
+      <thead>
+        <tr style="background: #f1f5f9; color: #1e293b;">
+          <th style="padding: 3px 6px; border: 1px solid #cbd5e1; width: 30%; font-weight: 700;">Recurso / Entregable</th>
+          <th style="padding: 3px 6px; border: 1px solid #cbd5e1; width: 42%; font-weight: 700;">Descripción del Contenido</th>
+          <th style="padding: 3px 6px; border: 1px solid #cbd5e1; width: 28%; font-weight: 700;">Enlace Permanente (URI)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #ffffff;">
+            <strong>Portal de Documentación</strong><br>
+            <span style="color: #64748b; font-size: 8.5px;">Sitio en vivo Jekyll Docs</span>
+          </td>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #ffffff; color: #334155;">
+            Bitácora de 25 prompts, memoria de iteraciones y matriz de 17 incidencias resueltas.
+          </td>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #ffffff;">
+            <a href="https://robert-flo.github.io/pj-vibe-game-docs/" target="_blank" style="color: #2563eb; font-family: monospace; font-size: 8.5px; text-decoration: underline;">robert-flo.github.io/pj-vibe-game-docs/</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #f8fafc;">
+            <strong>Código Fuente del Motor</strong><br>
+            <span style="color: #64748b; font-size: 8.5px;">Repositorio GitHub (Three.js)</span>
+          </td>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #f8fafc; color: #334155;">
+            Arquitectura WebGL modular, shaders GLSL, scripts Blender y síntesis de audio N64.
+          </td>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #f8fafc;">
+            <a href="https://github.com/robert-flo/pj-vibe-game" target="_blank" style="color: #2563eb; font-family: monospace; font-size: 8.5px; text-decoration: underline;">github.com/robert-flo/pj-vibe-game</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #ffffff;">
+            <strong>Histórico de Documentación</strong><br>
+            <span style="color: #64748b; font-size: 8.5px;">Repositorio GitHub (Markdown)</span>
+          </td>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #ffffff; color: #334155;">
+            Archivos fuente Markdown, evidencias empíricas y fuentes del informe técnico PDF.
+          </td>
+          <td style="padding: 3px 6px; border: 1px solid #e2e8f0; background: #ffffff;">
+            <a href="https://github.com/robert-flo/pj-vibe-game-docs" target="_blank" style="color: #2563eb; font-family: monospace; font-size: 8.5px; text-decoration: underline;">github.com/robert-flo/pj-vibe-game-docs</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <h2>Alcance Técnico Implementado (Flujo de 6 Escenas + Cierre de Victoria)</h2>
-  <ul>
-    <li><strong>Escena 1 (Title Screen):</strong> Logotipo 3D biselado en bloques facetados con textura de madera generado en Blender mediante la tipografía oficial <code>TypefaceMario64.otf</code> sobre mosaico azul acolchado N64.</li>
-    <li><strong>Escena 2 (3D Bukele Head Screen):</strong> Busto 3D fotorrealista interactivo de Nayib Bukele con seguimiento elástico del cursor de ratón/toque y esquema de iluminación cálida de estudio fotográfico.</li>
-    <li><strong>Escena 3 (SELECT FILE Screen):</strong> Tablero dorado de selección de partida con 4 ranuras (<code>BUKELE A, B, C, D</code>), insignias retro NEW y cursor tridimensional de mano enguantada N64.</li>
-    <li><strong>Escena 4 (La Carta de Gabriela):</strong> Pergamino real donde la Primera Dama Gabriela invita a Nayib al castillo, acompañado del arpegio musical de piano clásico extraído de la ROM.</li>
-    <li><strong>Escena 5 (Cinemática Lakitu):</strong> Vuelo aéreo calibrado milimétricamente al segundo 49.0 (22.5s) que transiciona suavemente hacia la tubería verde N64 recién emergida en los jardines.</li>
-    <li><strong>Escena 6 (Peach's Castle Grounds HD):</strong> Replicación geométrica de las listas de despliegue RSP (Fast3D) del nivel original de Nintendo 64 con texturas HD de RENDER96, 26 árboles clásicos en billboard sobre eje Y, cascada con flujo UV continuo, 4 banderas ondeantes, 4 carteles cómicos interactivos y 10 Bitcoins coleccionables.</li>
-    <li><strong>Cinemática de Victoria (Puertas Reales):</strong> Al cruzar el puente y alcanzar el pórtico (Z ≈ -29.5), las dos puertas estelares se abren hacia el exterior con su sonido clásico, Bukele entra sobre la alfombra roja, suena "Here we go!" + <code>star_fanfare.mp3</code> y se despliega el modal final con conteo de Bitcoins y tiempo (MM:SS).</li>
+  <h2 style="margin: 8px 0 4px; font-size: 13px;">Alcance Técnico Implementado (Flujo de 6 Escenas + Cierre de Victoria)</h2>
+  <ul style="margin: 0 0 6px 16px; font-size: 11px; line-height: 1.38;">
+    <li style="margin-bottom: 2px;"><strong>Escena 1 (Title Screen):</strong> Logotipo 3D biselado en bloques facetados con textura de madera generado en Blender mediante la tipografía oficial <code>TypefaceMario64.otf</code> sobre mosaico azul acolchado N64.</li>
+    <li style="margin-bottom: 2px;"><strong>Escena 2 (3D Bukele Head Screen):</strong> Busto 3D fotorrealista interactivo de Nayib Bukele con seguimiento elástico del cursor de ratón/toque y esquema de iluminación cálida de estudio fotográfico.</li>
+    <li style="margin-bottom: 2px;"><strong>Escena 3 (SELECT FILE Screen):</strong> Tablero dorado de selección de partida con 4 ranuras (<code>BUKELE A, B, C, D</code>), insignias retro NEW y cursor tridimensional de mano enguantada N64.</li>
+    <li style="margin-bottom: 2px;"><strong>Escena 4 (La Carta de Gabriela):</strong> Pergamino real donde la Primera Dama Gabriela invita a Nayib al castillo, acompañado del arpegio musical de piano clásico extraído de la ROM.</li>
+    <li style="margin-bottom: 2px;"><strong>Escena 5 (Cinemática Lakitu):</strong> Vuelo aéreo calibrado milimétricamente al segundo 49.0 (22.5s) que transiciona suavemente hacia la tubería verde N64 recién emergida en los jardines.</li>
+    <li style="margin-bottom: 2px;"><strong>Escena 6 (Peach's Castle Grounds HD):</strong> Replicación geométrica de las listas de despliegue RSP (Fast3D) del nivel original de Nintendo 64 con texturas HD de RENDER96, 26 árboles clásicos en billboard sobre eje Y, cascada con flujo UV continuo, 4 banderas ondeantes, 4 carteles cómicos interactivos y 10 Bitcoins coleccionables.</li>
+    <li style="margin-bottom: 2px;"><strong>Cinemática de Victoria (Puertas Reales):</strong> Al cruzar el puente y alcanzar el pórtico (Z ≈ -29.5), las dos puertas estelares se abren hacia el exterior con su sonido clásico, Bukele entra sobre la alfombra roja, suena "Here we go!" + <code>star_fanfare.mp3</code> y se despliega el modal final con conteo de Bitcoins y tiempo (MM:SS).</li>
   </ul>
 
-  <h2>Ficha Técnica de Herramientas</h2>
-  <ul>
-    <li><strong>Motor Gráfico:</strong> Three.js (WebGL ES Modules) sin bundlers opacos para máxima legibilidad.</li>
-    <li><strong>Modelado y Scripts Offline:</strong> Blender 5.2.2 LTS con scripts Python para mallas GLB y optimización UV.</li>
-    <li><strong>Audio Auténtico:</strong> Extracción de secuencias <code>.m64</code> y muestras PCM <code>.aiff</code> desde la ROM US de SM64, sintetizadas con NumPy según <code>seqplayer.c</code> + sintetizador Web Audio API de respaldo.</li>
-    <li><strong>Compatibilidad Multiplataforma:</strong> Controles de teclado WASD/Flechas/Espacio + D-Pad táctil virtual y botón A para móviles/tablets.</li>
+  <h2 style="margin: 8px 0 4px; font-size: 13px;">Ficha Técnica de Herramientas</h2>
+  <ul style="margin: 0 0 6px 16px; font-size: 11px; line-height: 1.38;">
+    <li style="margin-bottom: 2px;"><strong>Motor Gráfico:</strong> Three.js (WebGL ES Modules) sin bundlers opacos para máxima legibilidad.</li>
+    <li style="margin-bottom: 2px;"><strong>Modelado y Scripts Offline:</strong> Blender 5.2.2 LTS con scripts Python para mallas GLB y optimización UV.</li>
+    <li style="margin-bottom: 2px;"><strong>Audio Auténtico:</strong> Extracción de secuencias <code>.m64</code> y muestras PCM <code>.aiff</code> desde la ROM US de SM64, sintetizadas con NumPy según <code>seqplayer.c</code> + sintetizador Web Audio API de respaldo.</li>
+    <li style="margin-bottom: 2px;"><strong>Compatibilidad Multiplataforma:</strong> Controles de teclado WASD/Flechas/Espacio + D-Pad táctil virtual y botón A para móviles/tablets.</li>
   </ul>
 
   <div class="page-footer">

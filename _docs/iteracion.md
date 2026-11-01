@@ -383,6 +383,6 @@ Las siguientes capturas reales tomadas directamente del motor durante las sesion
 ![Etapa 14: Ciclo de carrera orgánico de Bukele con zapatillas niveladas]({{ '/assets/images/proceso/etapa14_caminata_organica_bukele.png' | relative_url }})
 *Refinamiento anatómico de la marcha: introducción de los huesos `FootL` y `FootR` en la jerarquía FK, nivelación de zapatillas con el plano del suelo, flexión suave de rodilla en el avance e inclinación corporal atlética hacia adelante.*
 
-### Etapa N — Jerarquía Visual y Acceso Inmediato al Videojuego en el Entregable PDF
-![Etapa 15: Botón hero y tarjeta interactiva de acceso al juego en el documento PDF]({{ '/assets/images/proceso/etapa15_pdf_hero_cta_game.png' | relative_url }})
-*Rediseño de la jerarquía visual en el documento oficial: botón interactivo destacado en la portada (página 1), Hero Card estilizada con llamado a la acción dorado y especificaciones en la sección ejecutiva (página 2), y botón de cierre en la conclusión (página 6), permitiendo a cualquier lector entrar al juego a primera vista.*
+### Etapa N — Jerarquía Visual con Acceso Directo y Tabla Académica de Repositorios (PDF Oficial)
+![Etapa 15: Botón hero y tarjeta interactiva de acceso al juego con tabla académica de repositorios en el documento PDF]({{ '/assets/images/proceso/etapa15_pdf_hero_cta_game.png' | relative_url }})
+*Rediseño de la jerarquía visual en el documento oficial: botón interactivo destacado en la portada (página 1), Hero Card estilizada con llamado a la acción dorado y especificaciones en la sección ejecutiva (página 2), acompañada de la Tabla 1.1 formal de repositorios y fuentes técnicas en estándar académico, y botón de cierre en la conclusión (página 6).*
